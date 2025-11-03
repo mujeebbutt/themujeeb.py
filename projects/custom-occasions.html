@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base target="_self">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Custom Occasion Sites (Birthdays & Proposals) — Project | Mujeeb ur Rehman</title>
+  <meta name="description" content="Personalized microsites with animations, countdowns, galleries, and RSVP — made to create moments."/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: { blue: '#00d4ff', orange: '#ff6b35', dark: '#0a0a0a', card: '#1a1a1a' },
+            ink: '#0a0a0a',
+            edge: '#1e1e1e',
+            accent: { t: '#14b8a6', v: '#8b5cf6' }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root { color-scheme: dark; }
+    body { background:#0a0a0a; color:#fff; }
+    .glass { background:rgba(255,255,255,.05); backdrop-filter: blur(10px); border:1px solid rgba(255,255,255,.1);}
+    .tag { background-color: rgb(20 184 166 / .14); color:#5eead4;}
+  </style>
+</head>
+<body class="min-h-screen">
+  <header class="sticky top-0 z-40 glass border-b border-gray-800">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="../index.html#projects" class="font-semibold text-sm text-gray-300 hover:text-white">← Back to Portfolio</a>
+      <div class="text-sm text-gray-400">Project Page</div>
+    </div>
+  </header>
+  <main class="max-w-6xl mx-auto px-6 py-12">
+  <!-- Hero -->
+  <section class="grid md:grid-cols-2 gap-8 items-center mb-10">
+    <div>
+      <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-4">Custom Occasion Sites (Birthdays & Proposals)</h1>
+      <p class="text-gray-300 text-lg">Personalized microsites with animations, countdowns, galleries, and RSVP — made to create moments.</p>
+      <div class="mt-5 flex flex-wrap gap-2"><span class="tag px-3 py-1 rounded-full text-sm">HTML</span> <span class="tag px-3 py-1 rounded-full text-sm">Tailwind</span> <span class="tag px-3 py-1 rounded-full text-sm">JavaScript</span> <span class="tag px-3 py-1 rounded-full text-sm">Airtable</span></div>
+      <div class="mt-6 flex flex-wrap gap-3"><a href="#" class="px-4 py-2 rounded-lg bg-gradient-to-r from-accent-t to-accent-v hover:opacity-90 transition text-white">View Code</a> <a href="#" class="px-4 py-2 rounded-lg bg-gradient-to-r from-accent-t to-accent-v hover:opacity-90 transition text-white">Live Demo</a></div>
+    </div>
+    <div>
+      <div class="glass rounded-2xl p-4">
+        <div class="aspect-video rounded-xl bg-primary-card border border-gray-800 flex items-center justify-center text-gray-500">
+          Project hero image / GIF
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid md:grid-cols-2 gap-8 mb-12">
+    <div class="glass rounded-2xl p-6">
+      <h2 class="text-xl font-bold mb-3">What It Does</h2>
+      <ul class="list-disc list-inside space-y-2 text-gray-300"><li>Hero animation + countdown timer</li>
+<li>Photo gallery & memory lane section</li>
+<li>Interactive RSVP with guest messages</li>
+<li>Optional: private passcode access</li></ul>
+    </div>
+    <div class="glass rounded-2xl p-6">
+      <h2 class="text-xl font-bold mb-3">Why I Built It</h2>
+      <p class="text-gray-300">A fun way to blend design and emotion — and a quick productized service I can ship in a day.</p>
+    </div>
+  </section>
+
+  <section class="grid md:grid-cols-2 gap-8 mb-12">
+    <div class="glass rounded-2xl p-6">
+      <h2 class="text-xl font-bold mb-3">Tech Stack</h2>
+      <ul class="list-disc list-inside space-y-2 text-gray-300"><li>Tailwind CSS</li>
+<li>Vanilla JS</li>
+<li>Airtable/Google Sheets backend (no-code)</li>
+<li>Netlify Forms (optional)</li></ul>
+    </div>
+    <div class="glass rounded-2xl p-6">
+      <h2 class="text-xl font-bold mb-3">How to Run</h2>
+      <ol class="list-decimal list-inside space-y-2 text-gray-300"><li>Duplicate template</li>
+<li>Swap images & text</li>
+<li>Connect RSVP storage</li>
+<li>Deploy to Netlify/Vercel</li></ol>
+      <p class="text-sm text-gray-400 mt-3"></p>
+    </div>
+  </section>
+
+  <section class="mb-12">
+    <h2 class="text-xl font-bold mb-4">Screenshots</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="glass rounded-xl border border-gray-800 aspect-video flex items-center justify-center text-gray-600">Screenshot 1</div>
+      <div class="glass rounded-xl border border-gray-800 aspect-video flex items-center justify-center text-gray-600">Screenshot 2</div>
+      <div class="glass rounded-xl border border-gray-800 aspect-video flex items-center justify-center text-gray-600">Screenshot 3</div>
+    </div>
+    <p class="text-sm text-gray-400 mt-3">Place images in <code>/assets/img/</code> and swap these placeholders.</p>
+  </section>
+
+  <section class="glass rounded-2xl p-6 mb-12">
+    <h2 class="text-xl font-bold mb-3">Highlights & Learnings</h2>
+    <ul class="list-disc list-inside space-y-2 text-gray-300"><li>Keep copy personal</li>
+<li>Motion should be subtle</li>
+<li>Mobile-first layout wins</li></ul>
+  </section>
+
+  <section class="grid md:grid-cols-2 gap-6">
+    <a href="#" class="glass rounded-2xl p-6 hover:bg-white/10 transition">
+      <div class="text-sm text-gray-400 mb-1">Repository</div>
+      <div class="font-semibold">View Source Code →</div>
+      <p class="text-gray-400 mt-2 text-sm">Browse core modules and UI.</p>
+    </a>
+    <a href="#" class="glass rounded-2xl p-6 hover:bg-white/10 transition">
+      <div class="text-sm text-gray-400 mb-1">Live Demo</div>
+      <div class="font-semibold">Open Deployed App →</div>
+      <p class="text-gray-400 mt-2 text-sm">Interact with the app workflow.</p>
+    </a>
+  </section>
+
+  <div class="mt-10">
+    <a href="../index.html#projects" class="inline-flex items-center gap-2 text-accent-t hover:underline">
+      ← Back to Portfolio
+    </a>
+  </div>
+  </main>
+  <footer class="border-t border-gray-800 py-10 text-center text-gray-400">
+    © 2025 Mujeeb ur Rehman · Built with Tailwind
+  </footer>
+</body>
+</html>

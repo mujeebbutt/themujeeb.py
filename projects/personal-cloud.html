@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <base target="_self">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Cloud — Project | Mujeeb ur Rehman</title>
+  <meta name="description"
+    content="A self-hosted cloud for files, calendars, and collaboration — secure, private, and always available." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: { blue: '#00d4ff', orange: '#ff6b35', dark: '#0a0a0a', card: '#1a1a1a' },
+            ink: '#0a0a0a',
+            edge: '#1e1e1e',
+            accent: { t: '#14b8a6', v: '#8b5cf6' }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+
+    body {
+      background: #0a0a0a;
+      color: #fff;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, .05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, .1);
+    }
+
+    .tag {
+      background-color: rgb(20 184 166 / .14);
+      color: #5eead4;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen">
+  <header class="sticky top-0 z-40 glass border-b border-gray-800">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="../index.html#projects" class="font-semibold text-sm text-gray-300 hover:text-white">← Back to
+        Portfolio</a>
+      <div class="text-sm text-gray-400">Project Page</div>
+    </div>
+  </header>
+  <main class="max-w-6xl mx-auto px-6 py-12">
+    <!-- Hero -->
+    <section class="grid md:grid-cols-2 gap-8 items-center mb-10">
+      <div>
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-4">Personal Cloud</h1>
+        <p class="text-gray-300 text-lg">A lightweight private cloud built with Flask — drag & drop multi-file uploads,
+          5 GB total cap, progress bar, and a clean gallery with previews for images/videos and cards for docs.</p>
+        <div class="mt-5 flex flex-wrap gap-2"><span class="tag px-3 py-1 rounded-full text-sm">Nextjs</span> <span
+            class="tag px-3 py-1 rounded-full text-sm">Python</span> <span
+            class="tag px-3 py-1 rounded-full text-sm">Tailwind</span> <span
+            class="tag px-3 py-1 rounded-full text-sm">Html</span></div>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <!-- View Code -->
+          <a href="https://github.com/mujeebbutt/Private-cloud" target="_blank"
+            class="px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 hover:opacity-90 transition text-white flex items-center gap-2">
+            <i class="fa-solid fa-code"></i> View Code
+          </a>
+
+          <!-- Demo Video -->
+          <a href="https://youtu.be/-E0hkOgyP2Y" target="_blank"
+            class="px-4 py-2 rounded-lg border border-indigo-500 text-indigo-300 hover:bg-indigo-500/20 transition flex items-center gap-2">
+            <i class="fa-solid fa-play"></i> Demo Video
+          </a>
+        </div>
+
+      </div>
+      <div>
+        <div class="glass rounded-2xl p-4">
+          <div
+            class="aspect-video rounded-xl bg-primary-card border border-gray-800 flex items-center justify-center text-gray-500">
+            <img src="/assets/privatecloud3.png" alt="">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid md:grid-cols-2 gap-8 mb-12">
+      <div class="glass rounded-2xl p-6">
+        <h2 class="text-xl font-bold mb-3">What It Does</h2>
+        <ul class="list-disc list-inside space-y-2 text-gray-300">
+          <li>User accounts with roles and quotas</li>
+          <li>Drag & drop or picker-based multi-file upload (`name="files[]"`).</li>
+          <li>Accepts images, videos, PDFs, and Word docs (.png .jpg .jpeg .gif .bmp .webp · .mp4 .avi .mov .mkv · .pdf
+            .doc .docx).</li>
+          <li>5 GB total upload cap enforced server-side (`MAX_CONTENT_LENGTH`) with graceful flash messages.</li>
+          <li>Client-side size guard + upload progress bar (XHR) for smooth feedback.</li>
+          <li>Secure filenames via <code>werkzeug.utils.secure_filename</code>; files saved under
+            <code>static/uploads/</code>.
+          </li>
+          <li>Auto gallery: image/video previews; non-preview files show a clean card with “Open”.</li>
+          <li>Error handling: large-file (413) handler and user-friendly flash notices.</li>
+        </ul>
+      </div>
+      <div class="glass rounded-2xl p-6">
+        <h2 class="text-xl font-bold mb-3">Why I Built It</h2>
+        <p class="text-gray-300">I wanted a simple, private alternative to big clouds for sharing and storing class/work
+          files — with strict size limits, clear progress feedback, and previews — while keeping the codebase tiny and
+          easy to deploy.
+        </p>
+      </div>
+    </section>
+
+    <section class="grid md:grid-cols-2 gap-8 mb-12">
+      <div class="glass rounded-2xl p-6">
+        <h2 class="text-xl font-bold mb-3">Tech Stack</h2>
+        <ul class="list-disc list-inside space-y-2 text-gray-300">
+          <li>Flask + Jinja2 (routing, templating, flash messages)</li>
+          <li>Werkzeug <code>secure_filename</code> (safe file names)</li>
+          <li>Tailwind (CDN) for the glass/dark UI</li>
+          <li>Vanilla JavaScript (drag & drop, XHR upload progress)</li>
+          <li>HTML5 Video for media playback</li>
+          <li>Optional prod: Gunicorn + NGINX (reverse proxy & SSL)</li>
+
+        </ul>
+      </div>
+      <div class="glass rounded-2xl p-6">
+        <h2 class="text-xl font-bold mb-3">How to Run</h2>
+        <ol class="list-decimal list-inside space-y-2 text-gray-300">
+          <li>Create env & install:
+            <code>python -m venv venv && source venv/bin/activate</code> (Windows:
+            <code>venv\Scripts\activate</code>)<br>
+            <code>pip install flask werkzeug</code>
+          </li>
+          <li>Make upload dir: <code>mkdir -p static/uploads</code></li>
+          <li>Run the app:
+            <code>python app.py</code> (or <code>flask run --host 0.0.0.0 --port 5000</code>)
+          </li>
+          <li>Open: <code>http://localhost:5000</code> and start uploading</li>
+
+        </ol>
+        <p class="text-sm text-gray-400 mt-3"></p>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-xl font-bold mb-4">Screenshots</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div
+          class="glass rounded-xl border border-gray-800 aspect-video flex items-center justify-center text-gray-600">
+          <img src="/assets/privatecloud1.png" alt="">
+        </div>
+        <div
+          class="glass rounded-xl border border-gray-800 aspect-video flex items-center justify-center text-gray-600">
+          <img src="/assets/privatecloud2.png" alt="">
+        </div>
+        <div
+          class="glass rounded-xl border border-gray-800 aspect-video flex items-center justify-center text-gray-600">
+          <img src="/assets/privatecloud3.png" alt="">
+        </div>
+      </div>
+
+    </section>
+
+    <section class="glass rounded-2xl p-6 mb-12">
+      <h2 class="text-xl font-bold mb-3">Highlights & Learnings</h2>
+      <ul class="list-disc list-inside space-y-2 text-gray-300">
+        <li>Automated backups matter</li>
+        <li>Separation of services for reliability</li>
+        <li>Monitoring and logs simplify support</li>
+      </ul>
+    </section>
+
+    <section class="grid md:grid-cols-2 gap-6">
+      <a href="#" class="glass rounded-2xl p-6 hover:bg-white/10 transition">
+        <div class="text-sm text-gray-400 mb-1">Repository</div>
+        <div class="font-semibold">View Source Code →</div>
+        <p class="text-gray-400 mt-2 text-sm">Browse core modules and UI.</p>
+      </a>
+      <a href="#" class="glass rounded-2xl p-6 hover:bg-white/10 transition">
+        <div class="text-sm text-gray-400 mb-1">Live Demo</div>
+        <div class="font-semibold">Open Deployed App →</div>
+        <p class="text-gray-400 mt-2 text-sm">Interact with the app workflow.</p>
+      </a>
+    </section>
+
+    <div class="mt-10">
+      <a href="../index.html#projects" class="inline-flex items-center gap-2 text-accent-t hover:underline">
+        ← Back to Portfolio
+      </a>
+    </div>
+  </main>
+  <footer class="border-t border-gray-800 py-10 text-center text-gray-400">
+    © 2025 Mujeeb ur Rehman · Built with Tailwind
+  </footer>
+</body>
+
+</html>

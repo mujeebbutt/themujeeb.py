@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <base target="_self">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+    <title>Mujeeb ur Rehman — Portfolio</title>
+    <meta name="description" content="Portfolio of Mujeeb ur Rehman — Creative Software Engineer and Video Editor." />
+    <link rel="icon" type="image/png" href="assets/code.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        ink: '#0a0a0a',
+                        card: '#121212',
+                        edge: '#1e1e1e',
+                        accent: { t: '#14b8a6', v: '#8b5cf6' }
+                    },
+                    animation: {
+                        glow: 'glow 2.6s ease-in-out infinite alternate',
+                        float: 'float 7s ease-in-out infinite',
+                        codeLine: 'codeLine 3s linear infinite',
+                    },
+                    keyframes: {
+                        glow: {
+                            '0%': { boxShadow: '0 0 10px rgba(20,184,166,.25), 0 0 25px rgba(139,92,246,.15)' },
+                            '100%': { boxShadow: '0 0 25px rgba(20,184,166,.4), 0 0 45px rgba(139,92,246,.25)' }
+                        },
+                        float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-14px)' } },
+                        codeLine: { '0%': { opacity: .08 }, '50%': { opacity: .25 }, '100%': { opacity: .08 } }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            color-scheme: dark;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #fff;
+            font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, .05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, .08);
+        }
+
+        .matrix-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background:
+                radial-gradient(1200px 600px at 120% -10%, rgba(139, 92, 246, .15), transparent 60%),
+                radial-gradient(1000px 600px at -10% 120%, rgba(20, 184, 166, .12), transparent 60%),
+                linear-gradient(45deg, #0a0a0a, #111, #0c0c0c);
+            overflow: hidden;
+        }
+
+        .code-line {
+            position: absolute;
+            width: 2px;
+            height: 120px;
+            background: linear-gradient(to bottom, transparent, rgba(139, 92, 246, .45), transparent);
+            animation: codeLine 3s linear infinite;
+            opacity: .15;
+        }
+
+        .tag {
+            background: rgba(20, 184, 166, .14);
+            color: #5eead4;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #14b8a6, #8b5cf6);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            opacity: .9;
+        }
+
+        .btn-ghost {
+            border: 1px solid rgba(255, 255, 255, .14);
+        }
+
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, .06);
+        }
+
+        .bar {
+            background: linear-gradient(90deg, #14b8a6, #8b5cf6);
+        }
+
+        .chip {
+            font-size: .7rem;
+            padding: .2rem .5rem;
+            border-radius: .5rem;
+            background: rgba(255, 255, 255, .08);
+            border: 1px solid rgba(255, 255, 255, .08);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen overflow-x-hidden">
+    <!-- Animated background -->
+    <div class="matrix-bg" id="matrixBg"></div>
+
+    <!-- NAV -->
+    <nav class="fixed top-0 inset-x-0 z-50 glass border-b border-edge">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#home"
+                class="font-extrabold tracking-tight bg-gradient-to-r from-accent-t to-accent-v bg-clip-text text-transparent">Mujeeb
+                ur Rehman</a>
+            <div class="hidden md:flex items-center gap-8 text-sm">
+                <a href="#home" class="hover:text-accent-t transition">Home</a>
+                <a href="#about" class="hover:text-accent-t transition">About</a>
+                <a href="#projects" class="hover:text-accent-t transition">Projects</a>
+                <a href="#skills" class="hover:text-accent-t transition">Skills</a>
+                <a href="#contact" class="hover:text-accent-t transition">Contact</a>
+            </div>
+            <button id="menuBtn" class="md:hidden p-2 rounded btn-ghost" aria-label="Open Menu">
+                <svg width="22" height="22" fill="none" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-width="2" d="M3 6h16M3 11h16M3 16h12" />
+                </svg>
+            </button>
+        </div>
+        <!-- mobile panel injected by JS -->
+    </nav>
+
+    <!-- HERO -->
+    <section id="home" class="min-h-[92vh] flex items-center justify-center pt-24">
+        <div class="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="text-center lg:text-left">
+                <h1 class="text-4xl md:text-6xl font-black leading-tight">
+                    Building Useful Software with <span
+                        class="bg-gradient-to-r from-accent-t to-accent-v bg-clip-text text-transparent">Clarity</span>
+                    & <span
+                        class="bg-gradient-to-r from-accent-v to-accent-t bg-clip-text text-transparent">Style</span>
+                </h1>
+                <p class="mt-5 text-gray-300 text-lg max-w-2xl mx-auto lg:mx-0">
+                    Creative Software Engineer — full-stack apps, cinematic UI, and automation that saves
+                    time.
+                </p>
+                <div class="mt-7 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a href="#projects"
+                        class="btn-primary px-6 py-3 rounded-full font-semibold shadow-lg shadow-black/20 transition">View
+                        Projects</a>
+                    <a href="#contact" class="px-6 py-3 rounded-full font-semibold btn-ghost">Get In Touch</a>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="relative w-80 h-80 mx-auto lg:mx-0">
+                    <div class="absolute inset-0 rounded-full blur-2xl opacity-60 animate-glow"
+                        style="background: radial-gradient(circle at 30% 30%, rgba(20,184,166,.35), transparent 40%), radial-gradient(circle at 70% 70%, rgba(139,92,246,.35), transparent 45%);">
+                    </div>
+                    <img src="/assets/mujeeb.png" alt="Portrait"
+                        class="relative w-full h-full rounded-full object-cover border-4 border-edge shadow-2xl animate-float"
+                        loading="lazy" />
+                    <div class="absolute -inset-3 rounded-full border border-accent-t/40 animate-pulse"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2
+                class="text-center text-3xl md:text-4xl font-extrabold mb-12 bg-gradient-to-r from-accent-t to-accent-v bg-clip-text text-transparent">
+                About Me</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+                <div>
+                    <p class="text-gray-300 mb-5">I bridge engineering and storytelling. From Python backends to sleek
+                        frontends and motion graphics, I build products that feel considered end-to-end.</p>
+                    <p class="text-gray-300 mb-8">I focus on clean architecture, performance, accessibility, and brand —
+                        so users get speed, clarity, and a look they remember.</p>
+                </div>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="glass p-6 rounded-2xl text-center hover:scale-[1.02] transition">
+                        <h3 class="font-semibold mb-1">Clean Code</h3>
+                        <p class="text-gray-400 text-sm">Maintainable & scalable.</p>
+                    </div>
+                    <div class="glass p-6 rounded-2xl text-center hover:scale-[1.02] transition">
+                        <h3 class="font-semibold mb-1">Cinematic UI</h3>
+                        <p class="text-gray-400 text-sm">Design with mood & motion.</p>
+                    </div>
+                    <div class="glass p-6 rounded-2xl text-center hover:scale-[1.02] transition">
+                        <h3 class="font-semibold mb-1">AI Integrations</h3>
+                        <p class="text-gray-400 text-sm">Automation & smart UX.</p>
+                    </div>
+                    <div class="glass p-6 rounded-2xl text-center hover:scale-[1.02] transition">
+                        <h3 class="font-semibold mb-1">Cloud-Ready</h3>
+                        <p class="text-gray-400 text-sm">Deployable & reliable.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="py-20 bg-card">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2
+                class="text-center text-3xl md:text-4xl font-extrabold mb-12 bg-gradient-to-r from-accent-t to-accent-v bg-clip-text text-transparent">
+                Projects</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Personal Cloud -->
+                <a href="projects/personal-cloud.html"
+                    class="glass rounded-2xl p-6 hover:scale-[1.02] transition group block">
+                    <div class="h-44 rounded-xl mb-4 overflow-hidden bg-edge">
+                        <img src="assets/privatecloud1.png" alt="Personal Cloud"
+                            class="w-full h-full object-cover group-hover:scale-105 transition" loading="lazy">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-1 text-accent-t">Personal Cloud</h3>
+                    <p class="text-gray-400 mb-4 text-sm">A lightweight private cloud built with Flask — drag & drop
+                        multi-file uploads, 5 GB total cap, progress bar, and a clean gallery with previews for
+                        images/videos and cards for docs.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag px-3 py-1 rounded-full text-xs">Nextjs</span>
+                        <span class="tag px-3 py-1 rounded-full text-xs">Python</span>
+                        <span class="tag px-3 py-1 rounded-full text-xs">Html</span>
+                    </div>
+                </a>
+
+                <!-- Mehwish Butt — Online Tutor -->
+                <a href="projects/mehwish-butt-tutor.html"
+                    class="glass rounded-2xl p-6 hover:scale-[1.02] transition group block">
+                    <div class="h-44 rounded-xl mb-4 overflow-hidden bg-edge">
+                        <img src="/assets/mehwishbutt2.png" alt="Mehwish Butt Online Tutor"
+                            class="w-full h-full object-cover group-hover:scale-105 transition" loading="lazy">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-1 text-accent-t">Mehwish Butt — Online Tutor</h3>
+                    <p class="text-gray-400 mb-4 text-sm">A modern teaching platform: Google Sign-In for
+                        parents/students, clean booking flow, and an LMS for grades, attendance, and fee tracking —
+                        built with HTML/Tailwind, Python, and Node.js.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag px-3 py-1 rounded-full text-sm">HTML</span>
+                        <span class="tag px-3 py-1 rounded-full text-sm">Python</span>
+                        <span class="tag px-3 py-1 rounded-full text-sm">Node.js</span>
+                        <span class="tag px-3 py-1 rounded-full text-sm">Google OAuth</span>
+                    </div>
+                </a>
+                <!-- Library Management System -->
+                <a href="projects/library-management.html"
+                    class="glass rounded-2xl p-6 hover:scale-[1.02] transition group block">
+                    <div class="h-44 rounded-xl mb-4 overflow-hidden bg-edge">
+                        <img src="assets/librarylogin.png" alt="Library Management System — dashboard"
+                            class="w-full h-full object-cover group-hover:scale-105 transition" width="600" height="400"
+                            loading="lazy">
+
+                    </div>
+                    <h3 class="text-xl font-semibold mb-1 text-accent-t">Library Management System</h3>
+                    <p class="text-gray-400 mb-4 text-sm">Books, Members, Loans — issue/return flows with fines & stats.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag px-3 py-1 rounded-full text-xs">Python</span>
+                        <span class="tag px-3 py-1 rounded-full text-xs">Tinkter</span>
+                        <span class="tag px-3 py-1 rounded-full text-xs">SQLite</span>
+                    </div>
+                </a>
+                <!-- Video Editing Portfolio -->
+                <a href="projects/video-portfolio.html"
+                    class="glass rounded-2xl p-6 hover:scale-[1.02] transition group block">
+                    <div class="h-44 rounded-xl mb-4 overflow-hidden bg-edge">
+                        <img src="assets/meemsproductionhero.png" alt="Video Editing Portfolio"
+                            class="w-full h-full object-cover group-hover:scale-105 transition" loading="lazy">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-1 text-accent-t">Video Editing Portfolio</h3>
+                    <p class="text-gray-400 mb-4 text-sm">Cinematic reel hub with category filters and embedded client
+                        cuts.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag px-3 py-1 rounded-full text-xs">Premiere Pro</span>
+                        <span class="tag px-3 py-1 rounded-full text-xs">After Effects</span>
+                    </div>
+                </a>
+
+                <!-- JARVIS-style Assistant -->
+                <a href="projects/jarvis-ai.html"
+                    class="glass rounded-2xl p-6 hover:scale-[1.02] transition group block">
+                    <div class="h-44 rounded-xl mb-4 overflow-hidden bg-edge">
+                        <img src="/assets/jarvis ai 1.png" alt="JARVIS AI"
+                            class="w-full h-full object-cover group-hover:scale-105 transition" loading="lazy">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-1 text-accent-t">JARVIS-style Assistant</h3>
+                    <p class="text-gray-400 mb-4 text-sm"> A terminal-based voice assistant built in Python — listens,
+                        understands, and speaks back.
+                        Launch apps, fetch info, control OS, and automate workflows with natural speech.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag px-3 py-1 rounded-full text-xs">Python</span>
+                        <span class="tag px-3 py-1 rounded-full text-xs">Speech</span>
+                        <span class="tag px-3 py-1 rounded-full text-xs">Automation</span>
+                    </div>
+                </a>
+
+
+                <!-- This Website -->
+                <a href="projects/portfolio-site.html"
+                    class="glass rounded-2xl p-6 hover:scale-[1.02] transition group block">
+                    <div class="h-44 rounded-xl mb-4 overflow-hidden bg-edge">
+                        <img src="/assets/Screenshot 2025-11-02 195142.png" alt="Portfolio Site"
+                            class="w-full h-full object-cover group-hover:scale-105 transition" loading="lazy">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-1 text-accent-t">This Portfolio Website</h3>
+                    <p class="text-gray-400 mb-4 text-sm">Tailwind, dark glass, scroll effects, and mobile menu —
+                        hand-rolled.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag px-3 py-1 rounded-full text-xs">HTML</span>
+                        <span class="tag px-3 py-1 rounded-full text-xs">Tailwind</span>
+                        <span class="tag px-3 py-1 rounded-full text-xs">JS</span>
+                    </div>
+                </a>
+
+            </div>
+
+            <div class="text-center mt-10">
+                <a href="#contact" class="inline-flex items-center gap-2 btn-ghost px-5 py-3 rounded-full">
+                    Need a custom build? <span class="text-accent-t">Let’s talk →</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2
+                class="text-center text-3xl md:text-4xl font-extrabold mb-12 bg-gradient-to-r from-accent-t to-accent-v bg-clip-text text-transparent">
+                Skills</h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <!-- Bars -->
+                <div class="space-y-5">
+                    <div>
+                        <div class="flex justify-between mb-2 text-sm"><span class="text-accent-t">Python</span><span
+                                class="text-gray-400">90%</span></div>
+                        <div class="h-2 rounded-full bg-edge">
+                            <div class="bar h-2 rounded-full" style="width:90%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-2 text-sm"><span class="text-accent-t">HTML</span><span
+                                class="text-gray-400">92%</span></div>
+                        <div class="h-2 rounded-full bg-edge">
+                            <div class="bar h-2 rounded-full" style="width:92%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-2 text-sm"><span class="text-accent-t">CSS</span><span
+                                class="text-gray-400">88%</span></div>
+                        <div class="h-2 rounded-full bg-edge">
+                            <div class="bar h-2 rounded-full" style="width:88%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-2 text-sm"><span
+                                class="text-accent-t">JavaScript</span><span class="text-gray-400">85%</span></div>
+                        <div class="h-2 rounded-full bg-edge">
+                            <div class="bar h-2 rounded-full" style="width:85%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-2 text-sm"><span class="text-accent-t">React.js</span><span
+                                class="text-gray-400">80%</span></div>
+                        <div class="h-2 rounded-full bg-edge">
+                            <div class="bar h-2 rounded-full" style="width:80%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-2 text-sm"><span class="text-accent-t">MySQL</span><span
+                                class="text-gray-400">78%</span></div>
+                        <div class="h-2 rounded-full bg-edge">
+                            <div class="bar h-2 rounded-full" style="width:78%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-2 text-sm"><span class="text-accent-t">AI / ML</span><span
+                                class="text-gray-400">80%</span></div>
+                        <div class="h-2 rounded-full bg-edge">
+                            <div class="bar h-2 rounded-full" style="width:80%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tags -->
+                <div class="glass p-6 rounded-2xl">
+                    <h3 class="font-semibold mb-4">Stacks & Tools</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="chip">HTML</span>
+                        <span class="chip">Tailwind CSS</span>
+                        <span class="chip">Python</span>
+                        <span class="chip">Flask</span>
+                        <span class="chip">Node.js</span>
+                        <span class="chip">JavaScript</span>
+                        <span class="chip">MySQL</span>
+                        <span class="chip">MongoDB</span>
+                        <span class="chip">Google OAuth</span>
+                        <span class="chip">AI / ML</span>
+                        <span class="chip">Git & GitHub</span>
+                        <span class="chip">Video Editing</span>
+                        <span class="chip">After Effects</span>
+                        <span class="chip">Premiere Pro</span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- CONTACT -->
+<!-- CONTACT -->
+<section id="contact" class="py-20 bg-card relative overflow-hidden">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-center text-3xl md:text-4xl font-extrabold mb-6 bg-gradient-to-r from-accent-t to-accent-v bg-clip-text text-transparent">
+      Get In Touch
+    </h2>
+
+    <p class="text-center text-gray-400 mb-10 max-w-2xl mx-auto">
+      Got a project in mind? Whether it’s a production-grade build or a sleek prototype, let’s make it happen.
+    </p>
+
+    <!-- Toggle Button -->
+    <div class="text-center mb-12">
+      <button id="toggleFormBtn"
+              class="px-6 py-3 rounded-xl bg-gradient-to-r from-accent-t to-accent-v text-white font-semibold shadow-lg hover:opacity-90 transition">
+        Show Contact Form
+      </button>
+    </div>
+
+    <!-- Contact Content (hidden by default) -->
+    <div id="contactContent" class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start opacity-0 translate-y-4 pointer-events-none transition-all duration-500 ease-in-out">
+
+      <!-- LEFT SIDE -->
+      <div class="space-y-6">
+        <div class="space-y-6">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center bg-white/10 backdrop-blur-md">✉️</div>
+            <div>
+              <h3 class="font-semibold text-white">Email</h3>
+              <p class="text-gray-400">meemsproduction@gmail.com</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center bg-white/10 backdrop-blur-md">📞</div>
+            <div>
+              <h3 class="font-semibold text-white">Phone</h3>
+              <p class="text-gray-400">+92 3066661853</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center bg-white/10 backdrop-blur-md">📍</div>
+            <div>
+              <h3 class="font-semibold text-white">Location</h3>
+              <p class="text-gray-400">Pakistan</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social Icons -->
+        <div class="flex gap-4 mt-8">
+          <a href="https://github.com/mujeebbutt" target="_blank"
+             class="w-10 h-10 rounded-full glass flex items-center justify-center hover:text-accent-t transition">
+             <i class="fa-brands fa-github text-xl"></i>
+          </a>
+
+          <a href="https://www.instagram.com/themujeeb.py?igsh=MTFvZGR6OHlhaTVuZg==" target="_blank"
+             class="w-10 h-10 rounded-full glass flex items-center justify-center hover:text-accent-t transition">
+             <i class="fa-brands fa-instagram text-xl"></i>
+          </a>
+
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=meemsproduction@gmail.com" target="_blank"
+             class="w-10 h-10 rounded-full glass flex items-center justify-center hover:text-accent-t transition">
+             <i class="fa-solid fa-envelope text-lg"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE: Google Form -->
+      <div class="relative p-[2px] rounded-2xl bg-gradient-to-r from-accent-t/60 to-accent-v/60 shadow-lg shadow-black/30">
+        <div class="glass p-4 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10">
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSfjGEv24XyPGg_5t2TinbpeFylUiMWhyYLHXb30ZH2WnkS-yg/viewform?embedded=true"
+            width="100%" height="950" frameborder="0" marginheight="0" marginwidth="0"
+            class="rounded-xl w-full"
+            style="background: transparent; filter: contrast(1.05) brightness(1.1);"
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TOGGLE SCRIPT -->
+<script>
+const btn = document.getElementById('toggleFormBtn');
+const content = document.getElementById('contactContent');
+let visible = false;
+
+btn.addEventListener('click', () => {
+  visible = !visible;
+
+  if (visible) {
+    content.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+    content.classList.add('opacity-100', 'translate-y-0');
+    btn.textContent = 'Hide Contact Form';
+  } else {
+    content.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+    content.classList.remove('opacity-100', 'translate-y-0');
+    btn.textContent = 'Show Contact Form';
+  }
+});
+</script>
+
+
+    <!-- FOOTER -->
+    <footer class="py-10 border-t border-edge">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div>
+                <div class="font-bold bg-gradient-to-r from-accent-t to-accent-v bg-clip-text text-transparent">
+                    Mujeeb ur Rehman</div>
+                <p class="text-gray-400 text-sm">Turning Ideas into Code & Creativity</p>
+            </div>
+            <div class="text-gray-400 text-sm">© 2025 · All rights reserved.</div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Matrix-like lines
+        function createCodeLines() {
+            const container = document.getElementById('matrixBg');
+            if (!container) return;
+            const count = 24;
+            for (let i = 0; i < count; i++) {
+                const d = document.createElement('div');
+                d.className = 'code-line';
+                d.style.left = (Math.random() * 100) + 'vw';
+                d.style.top = (-Math.random() * 100) + 'px';
+                d.style.animationDelay = (Math.random() * 4) + 's';
+                d.style.animationDuration = (2.2 + Math.random() * 2.4) + 's';
+                container.appendChild(d);
+            }
+        }
+
+        // Smooth scroll
+        function enableSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(a => {
+                a.addEventListener('click', e => {
+                    const href = a.getAttribute('href');
+                    if (!href || href === '#') return;
+                    const target = document.querySelector(href);
+                    if (!target) return;
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    toggleMobileMenu(false);
+                });
+            });
+        }
+
+        // Mobile menu
+        function buildMobileMenu() {
+            if (document.getElementById('mobileMenu')) return;
+            const nav = document.querySelector('nav');
+            const panel = document.createElement('div');
+            panel.id = 'mobileMenu';
+            panel.className = 'md:hidden hidden w-full bg-black/80 backdrop-blur-sm border-t border-edge';
+            panel.innerHTML = `
+        <div class="px-6 py-4 space-y-3">
+          <a href="#home" class="block">Home</a>
+          <a href="#about" class="block">About</a>
+          <a href="#projects" class="block">Projects</a>
+          <a href="#skills" class="block">Skills</a>
+          <a href="#contact" class="block">Contact</a>
+        </div>`;
+            nav.appendChild(panel);
+        }
+        function toggleMobileMenu(force) {
+            const panel = document.getElementById('mobileMenu');
+            if (!panel) return;
+            const hidden = panel.classList.contains('hidden');
+            const open = typeof force === 'boolean' ? force : hidden;
+            panel.classList.toggle('hidden', !open);
+        }
+        function wireMenuBtn() {
+            const btn = document.getElementById('menuBtn');
+            if (!btn) return;
+            buildMobileMenu();
+            btn.addEventListener('click', () => toggleMobileMenu());
+        }
+
+        // Reveal on scroll
+        function revealOnScroll() {
+            const targets = [
+                ...document.querySelectorAll('.glass'),
+                ...document.querySelectorAll('#about h2,#projects h2,#skills h2,#contact h2'),
+            ];
+            if (!('IntersectionObserver' in window)) return;
+            const obs = new IntersectionObserver((entries, ob) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('opacity-100', 'translate-y-0');
+                        e.target.classList.remove('opacity-0', 'translate-y-6');
+                        ob.unobserve(e.target);
+                    }
+                });
+            }, { threshold: .15, rootMargin: '0px 0px -10% 0px' });
+            targets.forEach(el => {
+                el.classList.add('opacity-0', 'translate-y-6', 'transition', 'duration-700');
+                obs.observe(el);
+            });
+        }
+
+        // Active nav on scroll
+        function activeNav() {
+            const sections = ['home', 'about', 'projects', 'skills', 'contact']
+                .map(id => document.getElementById(id)).filter(Boolean);
+            const links = Array.from(document.querySelectorAll('nav a[href^="#"]'));
+            if (sections.length === 0 || links.length === 0) return;
+
+            const setActive = id => {
+                links.forEach(a => {
+                    const match = a.getAttribute('href') === ('#' + id);
+                    a.classList.toggle('text-accent-t', match);
+                    a.classList.toggle('text-white', !match);
+                });
+            };
+
+            const obs = new IntersectionObserver((entries) => {
+                let best = null;
+                entries.forEach(e => { if (e.isIntersecting && (!best || e.intersectionRatio > best.intersectionRatio)) best = e; });
+                if (best?.target?.id) setActive(best.target.id);
+            }, { threshold: [.25, .5, .75], rootMargin: '-10% 0px -60% 0px' });
+
+            sections.forEach(s => obs.observe(s));
+        }
+
+        // Nav shadow
+        function navShadow() {
+            const nav = document.querySelector('nav');
+            const handler = () => {
+                if (scrollY > 10) nav.classList.add('shadow-lg', 'shadow-black/20');
+                else nav.classList.remove('shadow-lg', 'shadow-black/20');
+            };
+            handler(); addEventListener('scroll', handler, { passive: true });
+        }
+
+        // Contact form (demo)
+        function wireForm() {
+            const form = document.getElementById('contactForm');
+            form?.addEventListener('submit', e => {
+                e.preventDefault();
+                const fd = new FormData(form);
+                const payload = Object.fromEntries(fd.entries());
+                if (!payload.email || !payload.message) { alert('Please add your email and message.'); return; }
+                console.log('Form submission:', payload);
+                alert('Thanks! Your message has been sent.');
+                form.reset();
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            createCodeLines();
+            enableSmoothScroll();
+            wireMenuBtn();
+            revealOnScroll();
+            activeNav();
+            navShadow();
+            wireForm();
+        });
+    </script>
+</body>
+
+</html>

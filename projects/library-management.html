@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <base target="_self">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Library Management System — Project | Mujeeb ur Rehman</title>
+  <meta name="description"
+    content="A complete digital library solution with books, members, and borrowing workflows." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              blue: '#00d4ff',
+              orange: '#ff6b35',
+              dark: '#0a0a0a',
+              card: '#1a1a1a'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background: #0a0a0a;
+      color: #fff;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, .05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, .1);
+    }
+
+    .tag {
+      background-color: rgb(0 212 255 / .15);
+      color: #00d4ff;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen">
+  <!-- Header -->
+  <header class="sticky top-0 z-40 glass">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="../index.html#projects" class="font-semibold text-sm text-gray-300 hover:text-white">
+        ← Back to Portfolio
+      </a>
+      <div class="text-sm text-gray-400">Project Page</div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="max-w-6xl mx-auto px-6 pt-10 pb-6">
+  <div class="grid md:grid-cols-2 gap-8 items-center">
+    <!-- LEFT: Text -->
+    <div>
+      <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-4">
+        Library Management System
+      </h1>
+
+      <p class="text-gray-300 text-lg">
+        A complete digital library solution with inventory, members, and borrowing workflows — built to demonstrate
+        full-stack CRUD, relational modeling, and a clean dark/glass UI.
+      </p>
+
+      <!-- Tags -->
+      <div class="mt-5 flex flex-wrap gap-2">
+        <span class="tag px-3 py-1 rounded-full text-sm">Python</span>
+        <span class="tag px-3 py-1 rounded-full text-sm">Django</span>
+        <span class="tag px-3 py-1 rounded-full text-sm">SQLite/MySQL</span>
+        <span class="tag px-3 py-1 rounded-full text-sm">Tailwind</span>
+      </div>
+
+      <!-- Buttons (built-in Tailwind colors) -->
+      <div class="mt-6 flex flex-wrap gap-3">
+        <!-- View Code -->
+        <a href="https://github.com/mujeebbutt/Library-Managment-System" target="_blank"
+           class="px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 hover:opacity-90 transition text-white flex items-center gap-2">
+          <i class="fa-solid fa-code"></i> View Code
+        </a>
+
+        <!-- Demo Video -->
+        <a href="https://youtu.be/mhKI3iF6aW0" target="_blank"
+           class="px-4 py-2 rounded-lg border border-indigo-500 text-indigo-300 hover:bg-indigo-500/20 transition flex items-center gap-2">
+          <i class="fa-solid fa-play"></i> Demo Video
+        </a>
+      </div>
+    </div>
+
+    <!-- RIGHT: Preview -->
+    <div class="glass rounded-2xl p-4">
+      <img src="../assets/libraryisusebook.png"
+           alt="Library Management System dashboard"
+           class="aspect-video rounded-xl border border-gray-800 object-cover w-full h-full">
+    </div>
+  </div>
+</section>
+
+
+  <!-- Info Blocks -->
+  <main class="max-w-6xl mx-auto px-6 pb-16">
+    <section class="grid md:grid-cols-2 gap-8 mb-10">
+      <div class="glass rounded-2xl p-6">
+        <h2 class="text-xl font-bold mb-3">What It Does</h2>
+        <ul class="list-disc list-inside space-y-2 text-gray-300">
+          <li>Books CRUD (title, author, ISBN, total & available copies)</li>
+          <li>Members CRUD (name, email) with uniqueness checks</li>
+          <li>Issue/Return workflows with auto stock decrement/increment</li>
+          <li>Overdue detection + fine calculation on return</li>
+          <li>Dashboard with quick stats & recent loans</li>
+          <li>Search & simple filters for books/members</li>
+        </ul>
+      </div>
+      <div class="glass rounded-2xl p-6">
+        <h2 class="text-xl font-bold mb-3">Why I Built It</h2>
+        <p class="text-gray-300">
+          To practice real-world CRUD patterns, normalized relational design, and clean separation between models,
+          forms, and views — then wrap it in a modern, cinematic UI suitable for a professional portfolio.
+        </p>
+      </div>
+    </section>
+
+    <!-- Tech + How to Run -->
+    <section class="grid md:grid-cols-2 gap-8 mb-12">
+      <div class="glass rounded-2xl p-6">
+        <h2 class="text-xl font-bold mb-3">Tech Stack</h2>
+        <ul class="list-disc list-inside space-y-2 text-gray-300">
+          <li>Django (models, forms, admin, messages)</li>
+          <li>SQLite by default; optional MySQL configuration</li>
+          <li>Tailwind (CDN) for dark + glass aesthetics</li>
+          <li>Vanilla templates with reusable base layout</li>
+        </ul>
+      </div>
+      <div class="glass rounded-2xl p-6">
+        <h2 class="text-xl font-bold mb-3">How to Run</h2>
+        <ol class="list-decimal list-inside space-y-2 text-gray-300">
+          <li>Create and activate a virtual environment</li>
+          <li><code>pip install -r requirements.txt</code></li>
+          <li><code>python manage.py migrate</code></li>
+          <li>(Optional) <code>python manage.py createsuperuser</code></li>
+          <li><code>python manage.py runserver</code></li>
+        </ol>
+        <p class="mt-3 text-sm text-gray-400">MySQL instructions are commented in <code>settings.py</code>.</p>
+      </div>
+    </section>
+
+    <!-- Screenshots -->
+    <section class="mb-12">
+      <h2 class="text-xl font-bold mb-4">Screenshots</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="glass rounded-xl border border-gray-800 aspect-video overflow-hidden">
+            <img src="../assets/librarydashboard.png" alt="Library Management System – Dashboard"
+              class="w-full h-full object-cover" loading="lazy">
+          </div>
+
+          <div class="glass rounded-xl border border-gray-800 aspect-video overflow-hidden">
+            <img src="../assets/libraryrecord.png" alt="Library Management System – Books List"
+              class="w-full h-full object-cover" loading="lazy">
+          </div>
+
+          <div class="glass rounded-xl border border-gray-800 aspect-video overflow-hidden">
+            <img src="../assets/libraryreturn.png" alt="Library Management System – Issue Loan screen"
+              class="w-full h-full object-cover" loading="lazy">
+          </div>
+        </div>
+
+
+    </section>
+
+    <!-- Highlights / Learnings -->
+    <section class="glass rounded-2xl p-6 mb-12">
+      <h2 class="text-xl font-bold mb-3">Highlights & Learnings</h2>
+      <ul class="list-disc list-inside space-y-2 text-gray-300">
+        <li>Atomic stock updates during issue/return (avoid race conditions)</li>
+        <li>Simple, readable model methods (<code>Loan.mark_returned()</code>)</li>
+        <li>Reusability via base template + message toasts</li>
+        <li>Clear UX for destructive actions (confirm modals/flows)</li>
+      </ul>
+    </section>
+
+    <!-- Links / CTA -->
+    <section class="grid md:grid-cols-2 gap-6">
+      <a href="#" class="glass rounded-2xl p-6 hover:bg-white/10 transition">
+        <div class="text-sm text-gray-400 mb-1">Repository</div>
+        <div class="font-semibold">View Source Code →</div>
+        <p class="text-gray-400 mt-2 text-sm">Browse models, views, and Tailwind templates.</p>
+      </a>
+      <a href="#" class="glass rounded-2xl p-6 hover:bg-white/10 transition">
+        <div class="text-sm text-gray-400 mb-1">Live Demo</div>
+        <div class="font-semibold">Open Deployed App →</div>
+        <p class="text-gray-400 mt-2 text-sm">Try issuing a book and returning it to see fines.</p>
+      </a>
+    </section>
+
+    <!-- Back link -->
+    <div class="mt-10">
+      <a href="../index.html#projects" class="inline-flex items-center gap-2 text-primary-blue hover:underline">
+        ← Back to Portfolio
+      </a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-800 py-10 text-center text-gray-400">
+    © 2025 Mujeeb ur Rehman · Built with Tailwind
+  </footer>
+</body>
+
+</html>
