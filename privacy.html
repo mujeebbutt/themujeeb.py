@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Mujeeb ur Rehman</title>
+    <link rel="icon" type="image/png" href="assets/fevicon2.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .bg-glow {
+            position: fixed;
+            width: 40vw;
+            height: 40vw;
+            background: radial-gradient(circle, rgba(245, 166, 35, 0.12) 0%, transparent 70%);
+            filter: blur(80px);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .nav-blur {
+            backdrop-filter: blur(16px);
+            background: rgba(10, 10, 10, 0.8);
+        }
+
+        .glass-card {
+            background: #111111;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .section-block {
+            background: #111111;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 32px;
+            margin-bottom: 24px;
+            transition: border-color 0.3s ease;
+        }
+
+        .section-block:hover {
+            border-color: rgba(245, 166, 35, 0.2);
+        }
+
+        .section-number {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(245, 166, 35, 0.6);
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 20px;
+            background: #f5a623;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .policy-text {
+            color: #9ca3af;
+            line-height: 1.8;
+            font-size: 0.92rem;
+        }
+
+        .policy-text ul {
+            margin-top: 12px;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .policy-text ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+        }
+
+        .policy-text ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #f5a623;
+            font-size: 12px;
+        }
+
+        .hero-badge {
+            background: rgba(245, 166, 35, 0.08);
+            border: 1px solid rgba(245, 166, 35, 0.2);
+            color: #f5a623;
+            padding: 6px 20px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toc-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            border-radius: 10px;
+            color: #6b7280;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .toc-item:hover {
+            background: rgba(245, 166, 35, 0.05);
+            color: #f5a623;
+        }
+
+        .toc-num {
+            font-size: 10px;
+            font-weight: 800;
+            color: rgba(245, 166, 35, 0.4);
+            min-width: 20px;
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: 0.6s ease-out;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .highlight-box {
+            background: rgba(245, 166, 35, 0.05);
+            border: 1px solid rgba(245, 166, 35, 0.15);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-top: 16px;
+            color: #d4a847;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+
+        .contact-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            color: #9ca3af;
+            margin-top: 10px;
+            transition: 0.2s;
+        }
+
+        .contact-chip:hover {
+            border-color: rgba(245, 166, 35, 0.3);
+            color: #f5a623;
+        }
+
+        .divider-line {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(245, 166, 35, 0.2), transparent);
+            margin: 32px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background Glow -->
+    <div class="bg-glow" style="top: -10%; right: -10%;"></div>
+    <div class="bg-glow" style="bottom: 20%; left: -10%; width: 30vw; height: 30vw; opacity: 0.6;"></div>
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 py-4 nav-blur border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+            <a href="index.html" class="text-xl font-black text-white tracking-tight hover:text-amber-500 transition">
+                themujeeb<span class="text-amber-500">.py</span>
+            </a>
+            <div class="flex items-center gap-4">
+                <a href="terms.html" class="hidden sm:block text-gray-400 hover:text-amber-500 text-sm transition">Terms
+                    of Service</a>
+                <a href="index.html"
+                    class="text-xs sm:text-sm font-semibold bg-amber-500 text-black px-3 sm:px-4 py-2 rounded-lg hover:bg-amber-400 transition">
+                    ← Portfolio
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="pt-32 md:pt-36 pb-16 px-6 md:px-12">
+        <div class="max-w-4xl mx-auto">
+            <div class="fade-up mb-6">
+                <span class="hero-badge">🔐 Legal Document</span>
+            </div>
+            <h1 class="fade-up text-4xl md:text-6xl font-black mb-4 leading-tight" style="transition-delay: 0.1s">
+                Privacy<br><span class="text-amber-500">Policy</span>
+            </h1>
+            <p class="fade-up text-gray-500 text-sm mb-8 max-w-xl leading-relaxed" style="transition-delay: 0.2s">
+                This policy outlines how Mujeeb ur Rehman collects, uses, and protects any information when you use this
+                portfolio website or engage services.
+            </p>
+            <div class="fade-up flex flex-wrap gap-4 text-xs text-gray-600" style="transition-delay: 0.3s">
+                <span class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                    Effective: January 1, 2026
+                </span>
+                <span class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-amber-500 rounded-full"></span>
+                    Last Updated: March 2026
+                </span>
+                <span class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                    Governed by Pakistani Law
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <div class="max-w-7xl mx-auto px-6 md:px-12 pb-24">
+        <div class="grid md:grid-cols-3 gap-10">
+
+            <!-- Table of Contents (Sidebar) -->
+            <aside class="md:col-span-1">
+                <div class="glass-card p-6 md:sticky md:top-24">
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-amber-500 mb-4">Contents</h3>
+                    <nav class="flex flex-col gap-1">
+                        <a href="#section-1" class="toc-item"><span class="toc-num">01</span> Information We Collect</a>
+                        <a href="#section-2" class="toc-item"><span class="toc-num">02</span> How We Use Information</a>
+                        <a href="#section-3" class="toc-item"><span class="toc-num">03</span> Cookies & Tracking</a>
+                        <a href="#section-4" class="toc-item"><span class="toc-num">04</span> Third-Party Services</a>
+                        <a href="#section-5" class="toc-item"><span class="toc-num">05</span> Data Security</a>
+                        <a href="#section-6" class="toc-item"><span class="toc-num">06</span> Your Rights</a>
+                        <a href="#section-7" class="toc-item"><span class="toc-num">07</span> Children's Privacy</a>
+                        <a href="#section-8" class="toc-item"><span class="toc-num">08</span> Changes to Policy</a>
+                        <a href="#section-9" class="toc-item"><span class="toc-num">09</span> Contact</a>
+                    </nav>
+
+                    <div class="divider-line"></div>
+
+                    <div class="text-xs text-gray-600 leading-relaxed">
+                        <p class="mb-2 font-semibold text-gray-500">Questions?</p>
+                        <p>Reach out directly at any time via email or WhatsApp.</p>
+                        <a href="mailto:mujeeb@themujeeb.dev" class="contact-chip block mt-3">
+                            📧 mujeeb@themujeeb.dev
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Content -->
+            <main class="md:col-span-2">
+
+                <div id="section-1" class="section-block fade-up">
+                    <div class="section-number">Section 01</div>
+                    <h2 class="section-title">Information We Collect</h2>
+                    <p class="policy-text">
+                        When you visit this portfolio website or contact me through any channel, I may collect the
+                        following types of information:
+                    </p>
+                    <p class="policy-text">
+                    <ul>
+                        <li><strong class="text-gray-300">Contact Information:</strong> Your name, email address, phone
+                            number, or WhatsApp number when you fill out a contact form or reach out directly.</li>
+                        <li><strong class="text-gray-300">Project Requirements:</strong> Details you provide about your
+                            project needs, budget, and timeline when requesting services.</li>
+                        <li><strong class="text-gray-300">Usage Data:</strong> Anonymous analytics data including pages
+                            visited, time spent, device type, browser, and approximate geographic location
+                            (country/region level only).</li>
+                        <li><strong class="text-gray-300">Communication History:</strong> Records of our email or
+                            messaging conversations for service continuity.</li>
+                        <li><strong class="text-gray-300">Payment Details:</strong> For Fiverr transactions, payment
+                            data is handled exclusively by Fiverr's platform — I do not collect or store payment
+                            information directly.</li>
+                    </ul>
+                    </p>
+                    <div class="highlight-box">
+                        ℹ️ I only collect information necessary to provide services or improve the website experience. I
+                        do not engage in bulk data collection or profiling.
+                    </div>
+                </div>
+
+                <div id="section-2" class="section-block fade-up">
+                    <div class="section-number">Section 02</div>
+                    <h2 class="section-title">How We Use Your Information</h2>
+                    <p class="policy-text">
+                        Information collected is used strictly for the following purposes:
+                    <ul>
+                        <li>Responding to your inquiries and project proposals</li>
+                        <li>Delivering software products or services you have commissioned</li>
+                        <li>Sending project updates, deliverables, and relevant communications</li>
+                        <li>Improving the website's content and user experience</li>
+                        <li>Maintaining records of completed work for portfolio documentation</li>
+                        <li>Complying with legal obligations if required</li>
+                    </ul>
+                    </p>
+                    <p class="policy-text mt-4">
+                        Your information is <strong class="text-white">never sold</strong> to third parties, used for
+                        spam campaigns, or shared with advertisers.
+                    </p>
+                </div>
+
+                <div id="section-3" class="section-block fade-up">
+                    <div class="section-number">Section 03</div>
+                    <h2 class="section-title">Cookies & Tracking</h2>
+                    <p class="policy-text">
+                        This website may use minimal, privacy-respecting analytics tools to understand visitor
+                        behaviour. These may include:
+                    <ul>
+                        <li><strong class="text-gray-300">Analytics Cookies:</strong> Used to track page views and
+                            navigation patterns anonymously.</li>
+                        <li><strong class="text-gray-300">Preference Cookies:</strong> Optional cookies to remember your
+                            settings or preferences.</li>
+                        <li><strong class="text-gray-300">No Advertising Cookies:</strong> This site does not serve ads
+                            and does not use advertising or retargeting cookies.</li>
+                    </ul>
+                    </p>
+                    <p class="policy-text mt-4">
+                        You can disable cookies at any time through your browser settings without affecting core
+                        functionality of the site.
+                    </p>
+                </div>
+
+                <div id="section-4" class="section-block fade-up">
+                    <div class="section-number">Section 04</div>
+                    <h2 class="section-title">Third-Party Services</h2>
+                    <p class="policy-text">
+                        This website integrates with external platforms. When you interact with these services, their
+                        own privacy policies apply:
+                    <ul>
+                        <li><strong class="text-gray-300">GitHub:</strong> Public repository links and GitHub stats
+                            widgets. <a
+                                href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement"
+                                target="_blank" class="text-amber-500 hover:underline">GitHub Privacy Policy</a></li>
+                        <li><strong class="text-gray-300">Google Fonts:</strong> Font files may be loaded from Google's
+                            CDN. <a href="https://policies.google.com/privacy" target="_blank"
+                                class="text-amber-500 hover:underline">Google Privacy Policy</a></li>
+                        <li><strong class="text-gray-300">Fiverr:</strong> All commercial transactions are processed
+                            through Fiverr's platform. <a href="https://www.fiverr.com/privacy-policy" target="_blank"
+                                class="text-amber-500 hover:underline">Fiverr Privacy Policy</a></li>
+                        <li><strong class="text-gray-300">Firebase/Google Hosting:</strong> This site may be hosted on
+                            Firebase, subject to Google's infrastructure privacy terms.</li>
+                        <li><strong class="text-gray-300">LinkedIn:</strong> Profile link provided for professional
+                            networking; any data entered on LinkedIn is governed by LinkedIn's policies.</li>
+                    </ul>
+                    </p>
+                </div>
+
+                <div id="section-5" class="section-block fade-up">
+                    <div class="section-number">Section 05</div>
+                    <h2 class="section-title">Data Security</h2>
+                    <p class="policy-text">
+                        I take reasonable technical and organizational measures to protect your personal information
+                        from unauthorized access, alteration, or disclosure. These include:
+                    <ul>
+                        <li>HTTPS encryption on all data transmitted to/from this website</li>
+                        <li>Restricted access to any collected contact information</li>
+                        <li>Regular review of how data is stored and who can access it</li>
+                        <li>Using established, secure platforms (Firebase, Fiverr) rather than custom unaudited data
+                            storage</li>
+                    </ul>
+                    </p>
+                    <div class="highlight-box">
+                        ⚠️ No method of internet transmission is 100% secure. While I strive to protect your data, I
+                        cannot guarantee absolute security. Please contact me immediately if you suspect any breach.
+                    </div>
+                </div>
+
+                <div id="section-6" class="section-block fade-up">
+                    <div class="section-number">Section 06</div>
+                    <h2 class="section-title">Your Rights</h2>
+                    <p class="policy-text">
+                        You have the right to:
+                    <ul>
+                        <li><strong class="text-gray-300">Access:</strong> Request a copy of any personal information I
+                            hold about you.</li>
+                        <li><strong class="text-gray-300">Correction:</strong> Ask me to correct inaccurate or
+                            incomplete information.</li>
+                        <li><strong class="text-gray-300">Deletion:</strong> Request deletion of your personal data,
+                            subject to legal retention obligations.</li>
+                        <li><strong class="text-gray-300">Opt-Out:</strong> Unsubscribe from any communications at any
+                            time by replying to any email.</li>
+                        <li><strong class="text-gray-300">Portability:</strong> Receive your data in a structured,
+                            machine-readable format upon request.</li>
+                    </ul>
+                    </p>
+                    <p class="policy-text mt-4">
+                        To exercise any of these rights, contact me directly via email at <a
+                            href="mailto:mujeeb@themujeeb.dev"
+                            class="text-amber-500 hover:underline">mujeeb@themujeeb.dev</a>. I will respond within 7
+                        business days.
+                    </p>
+                </div>
+
+                <div id="section-7" class="section-block fade-up">
+                    <div class="section-number">Section 07</div>
+                    <h2 class="section-title">Children's Privacy</h2>
+                    <p class="policy-text">
+                        This website is not directed at children under 13 years of age. I do not knowingly collect
+                        personal information from children. If you believe a child has submitted personal information to
+                        this site, please contact me immediately and I will take steps to remove that information
+                        promptly.
+                    </p>
+                </div>
+
+                <div id="section-8" class="section-block fade-up">
+                    <div class="section-number">Section 08</div>
+                    <h2 class="section-title">Changes to This Policy</h2>
+                    <p class="policy-text">
+                        I may update this Privacy Policy from time to time to reflect changes in my practices,
+                        technology, or legal requirements. When I do:
+                    <ul>
+                        <li>The "Last Updated" date at the top of this page will be revised</li>
+                        <li>Significant changes will be noted prominently on the homepage</li>
+                        <li>Continued use of this website after changes constitutes acceptance of the updated policy
+                        </li>
+                    </ul>
+                    </p>
+                    <p class="policy-text mt-4">
+                        I encourage you to review this policy periodically.
+                    </p>
+                </div>
+
+                <div id="section-9" class="section-block fade-up">
+                    <div class="section-number">Section 09</div>
+                    <h2 class="section-title">Contact</h2>
+                    <p class="policy-text">
+                        If you have any questions, concerns, or requests regarding this Privacy Policy, please reach
+                        out:
+                    </p>
+                    <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <a href="mailto:mujeeb@themujeeb.dev" class="contact-chip">
+                            📧 mujeeb@themujeeb.dev
+                        </a>
+                        <a href="https://wa.me/923066661853" target="_blank" class="contact-chip">
+                            📞 +92 306 666 1853
+                        </a>
+                        <a href="https://linkedin.com/in/themujeebpy" target="_blank" class="contact-chip">
+                            💼 linkedin.com/in/themujeebpy
+                        </a>
+                        <a href="index.html" class="contact-chip">
+                            🌐 themujeeb.dev
+                        </a>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-10 px-6 md:px-12 border-t border-white/5 bg-[#0a0a0a]">
+        <div
+            class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-gray-600 text-xs text-center md:text-left">
+            <p>&copy; 2026 Mujeeb ur Rehman · Full-stack Developer</p>
+            <div class="flex flex-wrap justify-center gap-4 md:gap-8">
+                <a href="privacy.html" class="text-amber-500">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-amber-500 transition">Terms of Service</a>
+                <a href="index.html" class="hover:text-amber-500 transition">Portfolio</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-blur', 'py-3');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.remove('nav-blur', 'py-3');
+                navbar.classList.add('py-4');
+            }
+        });
+
+        // Fade-up animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html>

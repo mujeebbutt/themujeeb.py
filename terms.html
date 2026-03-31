@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | Mujeeb ur Rehman</title>
+    <link rel="icon" type="image/png" href="assets/fevicon2.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .bg-glow {
+            position: fixed;
+            width: 40vw;
+            height: 40vw;
+            background: radial-gradient(circle, rgba(245, 166, 35, 0.12) 0%, transparent 70%);
+            filter: blur(80px);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .nav-blur {
+            backdrop-filter: blur(16px);
+            background: rgba(10, 10, 10, 0.8);
+        }
+
+        .glass-card {
+            background: #111111;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .section-block {
+            background: #111111;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 32px;
+            margin-bottom: 24px;
+            transition: border-color 0.3s ease;
+        }
+
+        .section-block:hover {
+            border-color: rgba(245, 166, 35, 0.2);
+        }
+
+        .section-number {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(245, 166, 35, 0.6);
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 20px;
+            background: #f5a623;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .policy-text {
+            color: #9ca3af;
+            line-height: 1.8;
+            font-size: 0.92rem;
+        }
+
+        .policy-text ul {
+            margin-top: 12px;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .policy-text ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+        }
+
+        .policy-text ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #f5a623;
+            font-size: 12px;
+        }
+
+        .hero-badge {
+            background: rgba(245, 166, 35, 0.08);
+            border: 1px solid rgba(245, 166, 35, 0.2);
+            color: #f5a623;
+            padding: 6px 20px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toc-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            border-radius: 10px;
+            color: #6b7280;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .toc-item:hover {
+            background: rgba(245, 166, 35, 0.05);
+            color: #f5a623;
+        }
+
+        .toc-num {
+            font-size: 10px;
+            font-weight: 800;
+            color: rgba(245, 166, 35, 0.4);
+            min-width: 20px;
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: 0.6s ease-out;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .highlight-box {
+            background: rgba(245, 166, 35, 0.05);
+            border: 1px solid rgba(245, 166, 35, 0.15);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-top: 16px;
+            color: #d4a847;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+
+        .highlight-box.red {
+            background: rgba(239, 68, 68, 0.05);
+            border-color: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+        }
+
+        .contact-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            color: #9ca3af;
+            margin-top: 10px;
+            transition: 0.2s;
+            text-decoration: none;
+        }
+
+        .contact-chip:hover {
+            border-color: rgba(245, 166, 35, 0.3);
+            color: #f5a623;
+        }
+
+        .divider-line {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(245, 166, 35, 0.2), transparent);
+            margin: 32px 0;
+        }
+
+        .tag-pill {
+            display: inline-block;
+            background: rgba(245, 166, 35, 0.1);
+            border: 1px solid rgba(245, 166, 35, 0.15);
+            color: #f5a623;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 4px;
+            margin-right: 6px;
+            margin-bottom: 6px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background Glow -->
+    <div class="bg-glow" style="top: -10%; left: -10%;"></div>
+    <div class="bg-glow" style="bottom: 10%; right: -10%; width: 30vw; height: 30vw; opacity: 0.5;"></div>
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 py-4 nav-blur border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+            <a href="index.html" class="text-xl font-black text-white tracking-tight hover:text-amber-500 transition">
+                themujeeb<span class="text-amber-500">.py</span>
+            </a>
+            <div class="flex items-center gap-4">
+                <a href="privacy.html"
+                    class="hidden sm:block text-gray-400 hover:text-amber-500 text-sm transition">Privacy Policy</a>
+                <a href="index.html"
+                    class="text-xs sm:text-sm font-semibold bg-amber-500 text-black px-3 sm:px-4 py-2 rounded-lg hover:bg-amber-400 transition">
+                    ← Portfolio
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="pt-32 md:pt-36 pb-16 px-6 md:px-12">
+        <div class="max-w-4xl mx-auto">
+            <div class="fade-up mb-6">
+                <span class="hero-badge">📋 Legal Document</span>
+            </div>
+            <h1 class="fade-up text-4xl md:text-6xl font-black mb-4 leading-tight" style="transition-delay: 0.1s">
+                Terms of<br><span class="text-amber-500">Service</span>
+            </h1>
+            <p class="fade-up text-gray-500 text-sm mb-8 max-w-xl leading-relaxed" style="transition-delay: 0.2s">
+                These terms govern your use of this portfolio website and any software services or products provided by
+                Mujeeb ur Rehman. Please read carefully before proceeding.
+            </p>
+            <div class="fade-up flex flex-wrap gap-4 text-xs text-gray-600" style="transition-delay: 0.3s">
+                <span class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                    Effective: January 1, 2026
+                </span>
+                <span class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-amber-500 rounded-full"></span>
+                    Last Updated: March 2026
+                </span>
+                <span class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                    Jurisdiction: Pakistan
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <div class="max-w-7xl mx-auto px-6 md:px-12 pb-24">
+        <div class="grid md:grid-cols-3 gap-10">
+
+            <!-- Table of Contents (Sidebar) -->
+            <aside class="md:col-span-1">
+                <div class="glass-card p-6 md:sticky md:top-24">
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-amber-500 mb-4">Contents</h3>
+                    <nav class="flex flex-col gap-1">
+                        <a href="#section-1" class="toc-item"><span class="toc-num">01</span> Acceptance of Terms</a>
+                        <a href="#section-2" class="toc-item"><span class="toc-num">02</span> Services Offered</a>
+                        <a href="#section-3" class="toc-item"><span class="toc-num">03</span> Client Obligations</a>
+                        <a href="#section-4" class="toc-item"><span class="toc-num">04</span> Payments & Refunds</a>
+                        <a href="#section-5" class="toc-item"><span class="toc-num">05</span> Intellectual Property</a>
+                        <a href="#section-6" class="toc-item"><span class="toc-num">06</span> Deliverables &
+                            Timelines</a>
+                        <a href="#section-7" class="toc-item"><span class="toc-num">07</span> Limitation of
+                            Liability</a>
+                        <a href="#section-8" class="toc-item"><span class="toc-num">08</span> Prohibited Use</a>
+                        <a href="#section-9" class="toc-item"><span class="toc-num">09</span> Termination</a>
+                        <a href="#section-10" class="toc-item"><span class="toc-num">10</span> Governing Law</a>
+                        <a href="#section-11" class="toc-item"><span class="toc-num">11</span> Contact</a>
+                    </nav>
+
+                    <div class="divider-line"></div>
+
+                    <div class="text-xs text-gray-600 leading-relaxed">
+                        <p class="mb-2 font-semibold text-gray-500">Services Covered</p>
+                        <div class="flex flex-wrap mt-2">
+                            <span class="tag-pill">Web Dev</span>
+                            <span class="tag-pill">Python Apps</span>
+                            <span class="tag-pill">IoT</span>
+                            <span class="tag-pill">AI Tools</span>
+                            <span class="tag-pill">LMS</span>
+                            <span class="tag-pill">Consulting</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Content -->
+            <main class="md:col-span-2">
+
+                <div id="section-1" class="section-block fade-up">
+                    <div class="section-number">Section 01</div>
+                    <h2 class="section-title">Acceptance of Terms</h2>
+                    <p class="policy-text">
+                        By accessing this website (<strong class="text-gray-300">themujeeb.dev</strong>), contacting
+                        Mujeeb ur Rehman for services, or engaging in any professional or commercial relationship, you
+                        acknowledge that you have read, understood, and agree to be bound by these Terms of Service.
+                    </p>
+                    <p class="policy-text mt-3">
+                        If you do not agree to these terms, please discontinue use of this website and do not commission
+                        any services.
+                    </p>
+                    <div class="highlight-box">
+                        📌 These terms apply to website visitors, freelance clients, B2B partners, and anyone who
+                        purchases software products from this portfolio.
+                    </div>
+                </div>
+
+                <div id="section-2" class="section-block fade-up">
+                    <div class="section-number">Section 02</div>
+                    <h2 class="section-title">Services Offered</h2>
+                    <p class="policy-text">
+                        The following services are offered through this portfolio, Fiverr, and direct client engagement:
+                    <ul>
+                        <li><strong class="text-gray-300">Custom Software Development:</strong> Web applications,
+                            desktop apps, APIs, and automation tools.</li>
+                        <li><strong class="text-gray-300">Python Application Development:</strong> Desktop GUI
+                            applications, data tools, and AI-powered software.</li>
+                        <li><strong class="text-gray-300">IoT & Hardware Projects:</strong> Microcontroller programming,
+                            sensor integration, and smart device solutions.</li>
+                        <li><strong class="text-gray-300">Learning Management Systems (LMS):</strong> Firebase-based
+                            educational platforms for online institutes.</li>
+                        <li><strong class="text-gray-300">AI Integration:</strong> Embedding AI features into existing
+                            software products.</li>
+                        <li><strong class="text-gray-300">Software Products:</strong> Pre-built solutions such as the
+                            Inventory Management System (IMS), available for one-time purchase.</li>
+                        <li><strong class="text-gray-300">Technical Consulting:</strong> Advice on project architecture,
+                            tech stack selection, and software planning.</li>
+                    </ul>
+                    </p>
+                    <p class="policy-text mt-4">
+                        All service scope, deliverables, and timelines are agreed upon in writing before work commences.
+                    </p>
+                </div>
+
+                <div id="section-3" class="section-block fade-up">
+                    <div class="section-number">Section 03</div>
+                    <h2 class="section-title">Client Obligations</h2>
+                    <p class="policy-text">
+                        To ensure smooth project delivery, clients agree to:
+                    <ul>
+                        <li>Provide clear, complete, and timely project requirements and feedback</li>
+                        <li>Supply necessary assets, credentials, and access in a reasonable timeframe</li>
+                        <li>Respond to communications within 48 hours during active project phases</li>
+                        <li>Review and approve deliverables promptly at agreed milestones</li>
+                        <li>Not share confidential project discussions or unreleased deliverables without prior consent
+                        </li>
+                        <li>Ensure all content or materials provided are legally owned or licensed by the client</li>
+                    </ul>
+                    </p>
+                    <div class="highlight-box">
+                        ⏱️ Delays caused by the client (late feedback, missing assets, scope changes) will not be
+                        counted against agreed project timelines.
+                    </div>
+                </div>
+
+                <div id="section-4" class="section-block fade-up">
+                    <div class="section-number">Section 04</div>
+                    <h2 class="section-title">Payments & Refunds</h2>
+                    <p class="policy-text">
+                        <strong class="text-gray-300">For Fiverr Orders:</strong> All payments are processed through
+                        Fiverr's platform. Fiverr's payment, cancellation, and refund policies apply. Orders are final
+                        once marked as delivered unless revision requests fall within the agreed scope.
+                    </p>
+                    <p class="policy-text mt-3">
+                        <strong class="text-gray-300">For Direct Projects:</strong>
+                    <ul>
+                        <li>A deposit (typically 30–50%) is required before work begins</li>
+                        <li>Remaining balance is due upon final delivery and approval</li>
+                        <li>Invoices are payable within 7 days of issuance</li>
+                        <li>Late payments may result in work suspension or cancellation</li>
+                    </ul>
+                    </p>
+                    <p class="policy-text mt-3">
+                        <strong class="text-gray-300">Refund Policy:</strong>
+                    <ul>
+                        <li>Deposits are non-refundable once work has commenced</li>
+                        <li>If I am unable to deliver the agreed scope, a partial or full refund will be issued
+                            proportionally</li>
+                        <li>Refunds will not be issued for completed and approved deliverables</li>
+                        <li>Change-of-mind cancellations after project start are not eligible for full refunds</li>
+                    </ul>
+                    </p>
+                </div>
+
+                <div id="section-5" class="section-block fade-up">
+                    <div class="section-number">Section 05</div>
+                    <h2 class="section-title">Intellectual Property</h2>
+                    <p class="policy-text">
+                        <strong class="text-gray-300">Client-Commissioned Work:</strong> Upon full payment, the client
+                        receives full ownership of the delivered software, code, and assets unless otherwise specified
+                        in writing.
+                    </p>
+                    <p class="policy-text mt-3">
+                        <strong class="text-gray-300">Portfolio Rights:</strong> I reserve the right to showcase
+                        completed work in my portfolio, social media, and marketing materials unless the client
+                        explicitly requests confidentiality in the project agreement.
+                    </p>
+                    <p class="policy-text mt-3">
+                        <strong class="text-gray-300">Pre-built Products (e.g., IMS):</strong> Purchase of a pre-built
+                        software product grants the client a single-entity licence to use the software. Re-selling,
+                        sublicensing, white-labeling, or redistributing the product without a separate written agreement
+                        is prohibited.
+                    </p>
+                    <p class="policy-text mt-3">
+                        <strong class="text-gray-300">This Website:</strong> All content on themujeeb.dev — including
+                        text, design, code, graphics, and branding — is the intellectual property of Mujeeb ur Rehman.
+                        Reproduction without written permission is prohibited.
+                    </p>
+                </div>
+
+                <div id="section-6" class="section-block fade-up">
+                    <div class="section-number">Section 06</div>
+                    <h2 class="section-title">Deliverables & Timelines</h2>
+                    <p class="policy-text">
+                        Project timelines are estimated and agreed upon at the start of each engagement. The following
+                        conditions apply:
+                    <ul>
+                        <li>Timelines are based on the agreed scope; any scope additions will require timeline revision
+                        </li>
+                        <li>I will communicate proactively if delays are anticipated</li>
+                        <li>Revision rounds are limited to those stated in the original agreement (typically 2–3 rounds)
+                        </li>
+                        <li>Additional revisions beyond the agreed scope will be quoted separately</li>
+                        <li>Final deliverables will be provided via agreed channels (GitHub, Google Drive, email, etc.)
+                        </li>
+                    </ul>
+                    </p>
+                </div>
+
+                <div id="section-7" class="section-block fade-up">
+                    <div class="section-number">Section 07</div>
+                    <h2 class="section-title">Limitation of Liability</h2>
+                    <p class="policy-text">
+                        To the maximum extent permitted by applicable law, Mujeeb ur Rehman shall not be liable for:
+                    <ul>
+                        <li>Indirect, incidental, or consequential damages arising from the use of delivered software
+                        </li>
+                        <li>Loss of data, revenue, or business opportunities</li>
+                        <li>Errors or outages caused by third-party services (hosting, APIs, cloud platforms)</li>
+                        <li>Security vulnerabilities introduced by the client's own modifications post-delivery</li>
+                        <li>Damages arising from the client's use of the software beyond its intended purpose</li>
+                    </ul>
+                    </p>
+                    <div class="highlight-box red">
+                        ⚠️ Total liability in any claim is limited to the amount paid by the client for the specific
+                        service in question.
+                    </div>
+                </div>
+
+                <div id="section-8" class="section-block fade-up">
+                    <div class="section-number">Section 08</div>
+                    <h2 class="section-title">Prohibited Use</h2>
+                    <p class="policy-text">
+                        You agree not to use this website or any services for the following purposes:
+                    <ul>
+                        <li>Building software intended for illegal activities, fraud, or unauthorized data collection
+                        </li>
+                        <li>Creating systems that enable harassment, surveillance, or privacy violations</li>
+                        <li>Distributing malware, viruses, or any harmful software</li>
+                        <li>Misrepresenting my work or impersonating themujeeb.dev</li>
+                        <li>Scraping, copying, or reproducing website content without permission</li>
+                        <li>Any activity that violates Pakistani law or applicable international regulations</li>
+                    </ul>
+                    </p>
+                    <p class="policy-text mt-4">
+                        I reserve the right to refuse service to anyone for any reason, particularly if the requested
+                        project conflicts with ethical guidelines or the above prohibited uses.
+                    </p>
+                </div>
+
+                <div id="section-9" class="section-block fade-up">
+                    <div class="section-number">Section 09</div>
+                    <h2 class="section-title">Termination</h2>
+                    <p class="policy-text">
+                        Either party may terminate a project engagement with written notice under the following
+                        conditions:
+                    <ul>
+                        <li><strong class="text-gray-300">Client Termination:</strong> Clients may cancel before work
+                            commences for a full refund of any deposit. After work has begun, deposits are
+                            non-refundable and partial payment may be due for work completed to date.</li>
+                        <li><strong class="text-gray-300">Developer Termination:</strong> I reserve the right to
+                            terminate engagements if a client violates these terms, makes unreasonable demands, or
+                            engages in abusive communication. In such cases, payment for work completed will still be
+                            due.</li>
+                        <li><strong class="text-gray-300">Mutual Agreement:</strong> Projects may be cancelled by mutual
+                            written agreement with terms settled on a case-by-case basis.</li>
+                    </ul>
+                    </p>
+                </div>
+
+                <div id="section-10" class="section-block fade-up">
+                    <div class="section-number">Section 10</div>
+                    <h2 class="section-title">Governing Law</h2>
+                    <p class="policy-text">
+                        These Terms of Service are governed by the laws of the <strong class="text-gray-300">Islamic
+                            Republic of Pakistan</strong>. Any disputes arising from or related to these terms will be
+                        resolved through good-faith negotiation in the first instance. If negotiation fails, disputes
+                        will be subject to the jurisdiction of courts in Punjab, Pakistan.
+                    </p>
+                    <p class="policy-text mt-3">
+                        For international clients, you acknowledge that by engaging my services you agree to Pakistani
+                        jurisdiction for any disputes not resolved through direct communication.
+                    </p>
+                </div>
+
+                <div id="section-11" class="section-block fade-up">
+                    <div class="section-number">Section 11</div>
+                    <h2 class="section-title">Contact</h2>
+                    <p class="policy-text">
+                        For questions about these Terms of Service, project enquiries, or to discuss a potential
+                        engagement:
+                    </p>
+                    <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <a href="mailto:mujeeb@themujeeb.dev" class="contact-chip">
+                            📧 mujeeb@themujeeb.dev
+                        </a>
+                        <a href="https://wa.me/923066661853" target="_blank" class="contact-chip">
+                            📞 +92 306 666 1853
+                        </a>
+                        <a href="https://www.fiverr.com" target="_blank" class="contact-chip">
+                            💼 Fiverr Profile
+                        </a>
+                        <a href="index.html" class="contact-chip">
+                            🌐 themujeeb.dev
+                        </a>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-10 px-6 md:px-12 border-t border-white/5 bg-[#0a0a0a]">
+        <div
+            class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-gray-600 text-xs text-center md:text-left">
+            <p>&copy; 2026 Mujeeb ur Rehman · Full-stack Developer</p>
+            <div class="flex flex-wrap justify-center gap-4 md:gap-8">
+                <a href="privacy.html" class="hover:text-amber-500 transition">Privacy Policy</a>
+                <a href="terms.html" class="text-amber-500">Terms of Service</a>
+                <a href="index.html" class="hover:text-amber-500 transition">Portfolio</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-blur', 'py-3');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.remove('nav-blur', 'py-3');
+                navbar.classList.add('py-4');
+            }
+        });
+
+        // Fade-up animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html>

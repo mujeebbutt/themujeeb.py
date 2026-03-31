@@ -1,217 +1,404 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
-  <base target="_self">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Library Management System — Project | Mujeeb ur Rehman</title>
-  <meta name="description"
-    content="A complete digital library solution with books, members, and borrowing workflows." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library Management | Mujeeb ur Rehman</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            primary: {
-              blue: '#00d4ff',
-              orange: '#ff6b35',
-              dark: '#0a0a0a',
-              card: '#1a1a1a'
-            }
-          }
-        }
-      }
-    }
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
   <style>
     body {
-      background: #0a0a0a;
-      color: #fff;
+      font-family: 'Inter', sans-serif;
+      background-color: #0a0a0a;
+      color: #ffffff;
     }
 
-    .glass {
-      background: rgba(255, 255, 255, .05);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, .1);
+    .glass-card {
+      background: #111111;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: 0.3s ease;
     }
 
-    .tag {
-      background-color: rgb(0 212 255 / .15);
-      color: #00d4ff;
+    .glass-card:hover {
+      border-color: rgba(245, 166, 35, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .nav-blur {
+      backdrop-filter: blur(12px);
+      background: rgba(10, 10, 10, 0.8);
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: 0.6s ease-out;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Footer Socials Styling */
+    .footer-socials {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin: 16px 0;
+    }
+
+    .social-icon {
+      color: #888888;
+      transition: color 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .social-icon:hover {
+      color: #f5a623;
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(10, 10, 10, 0.98);
+      backdrop-filter: blur(20px);
+      z-index: 100;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .mobile-menu.active {
+      display: flex;
     }
   </style>
+  <link rel="icon" type="image/png" href="../assets/fevicon2.png">
+
+  <script src="../assets/background.js" defer></script>
 </head>
 
-<body class="min-h-screen">
-  <!-- Header -->
-  <header class="sticky top-0 z-40 glass">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="../index.html#projects" class="font-semibold text-sm text-gray-300 hover:text-white">
-        ← Back to Portfolio
-      </a>
-      <div class="text-sm text-gray-400">Project Page</div>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <section class="max-w-6xl mx-auto px-6 pt-10 pb-6">
-  <div class="grid md:grid-cols-2 gap-8 items-center">
-    <!-- LEFT: Text -->
-    <div>
-      <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-4">
-        Library Management System
-      </h1>
-
-      <p class="text-gray-300 text-lg">
-        A complete digital library solution with inventory, members, and borrowing workflows — built to demonstrate
-        full-stack CRUD, relational modeling, and a clean dark/glass UI.
-      </p>
-
-      <!-- Tags -->
-      <div class="mt-5 flex flex-wrap gap-2">
-        <span class="tag px-3 py-1 rounded-full text-sm">Python</span>
-        <span class="tag px-3 py-1 rounded-full text-sm">Django</span>
-        <span class="tag px-3 py-1 rounded-full text-sm">SQLite/MySQL</span>
-        <span class="tag px-3 py-1 rounded-full text-sm">Tailwind</span>
-      </div>
-
-      <!-- Buttons (built-in Tailwind colors) -->
-      <div class="mt-6 flex flex-wrap gap-3">
-        <!-- View Code -->
-        <a href="https://github.com/mujeebbutt/Library-Managment-System" target="_blank"
-           class="px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 hover:opacity-90 transition text-white flex items-center gap-2">
-          <i class="fa-solid fa-code"></i> View Code
-        </a>
-
-        <!-- Demo Video -->
-        <a href="https://youtu.be/mhKI3iF6aW0" target="_blank"
-           class="px-4 py-2 rounded-lg border border-indigo-500 text-indigo-300 hover:bg-indigo-500/20 transition flex items-center gap-2">
-          <i class="fa-solid fa-play"></i> Demo Video
-        </a>
-      </div>
-    </div>
-
-    <!-- RIGHT: Preview -->
-    <div class="glass rounded-2xl p-4">
-      <img src="../assets/libraryisusebook.png"
-           alt="Library Management System dashboard"
-           class="aspect-video rounded-xl border border-gray-800 object-cover w-full h-full">
-    </div>
+<body class="overflow-x-hidden pt-24">
+  <!-- Background Elements -->
+  <div class="bg-glow" style="top: -10%; left: -10%;"></div>
+  <div class="bg-glow"
+    style="bottom: -10%; right: -10%; background: radial-gradient(circle, rgba(245, 166, 35, 0.1) 0%, transparent 70%);">
   </div>
-</section>
 
 
-  <!-- Info Blocks -->
-  <main class="max-w-6xl mx-auto px-6 pb-16">
-    <section class="grid md:grid-cols-2 gap-8 mb-10">
-      <div class="glass rounded-2xl p-6">
-        <h2 class="text-xl font-bold mb-3">What It Does</h2>
-        <ul class="list-disc list-inside space-y-2 text-gray-300">
-          <li>Books CRUD (title, author, ISBN, total & available copies)</li>
-          <li>Members CRUD (name, email) with uniqueness checks</li>
-          <li>Issue/Return workflows with auto stock decrement/increment</li>
-          <li>Overdue detection + fine calculation on return</li>
-          <li>Dashboard with quick stats & recent loans</li>
-          <li>Search & simple filters for books/members</li>
-        </ul>
-      </div>
-      <div class="glass rounded-2xl p-6">
-        <h2 class="text-xl font-bold mb-3">Why I Built It</h2>
-        <p class="text-gray-300">
-          To practice real-world CRUD patterns, normalized relational design, and clean separation between models,
-          forms, and views — then wrap it in a modern, cinematic UI suitable for a professional portfolio.
-        </p>
-      </div>
-    </section>
-
-    <!-- Tech + How to Run -->
-    <section class="grid md:grid-cols-2 gap-8 mb-12">
-      <div class="glass rounded-2xl p-6">
-        <h2 class="text-xl font-bold mb-3">Tech Stack</h2>
-        <ul class="list-disc list-inside space-y-2 text-gray-300">
-          <li>Django (models, forms, admin, messages)</li>
-          <li>SQLite by default; optional MySQL configuration</li>
-          <li>Tailwind (CDN) for dark + glass aesthetics</li>
-          <li>Vanilla templates with reusable base layout</li>
-        </ul>
-      </div>
-      <div class="glass rounded-2xl p-6">
-        <h2 class="text-xl font-bold mb-3">How to Run</h2>
-        <ol class="list-decimal list-inside space-y-2 text-gray-300">
-          <li>Create and activate a virtual environment</li>
-          <li><code>pip install -r requirements.txt</code></li>
-          <li><code>python manage.py migrate</code></li>
-          <li>(Optional) <code>python manage.py createsuperuser</code></li>
-          <li><code>python manage.py runserver</code></li>
-        </ol>
-        <p class="mt-3 text-sm text-gray-400">MySQL instructions are commented in <code>settings.py</code>.</p>
-      </div>
-    </section>
-
-    <!-- Screenshots -->
-    <section class="mb-12">
-      <h2 class="text-xl font-bold mb-4">Screenshots</h2>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="grid md:grid-cols-3 gap-6">
-          <div class="glass rounded-xl border border-gray-800 aspect-video overflow-hidden">
-            <img src="../assets/librarydashboard.png" alt="Library Management System – Dashboard"
-              class="w-full h-full object-cover" loading="lazy">
-          </div>
-
-          <div class="glass rounded-xl border border-gray-800 aspect-video overflow-hidden">
-            <img src="../assets/libraryrecord.png" alt="Library Management System – Books List"
-              class="w-full h-full object-cover" loading="lazy">
-          </div>
-
-          <div class="glass rounded-xl border border-gray-800 aspect-video overflow-hidden">
-            <img src="../assets/libraryreturn.png" alt="Library Management System – Issue Loan screen"
-              class="w-full h-full object-cover" loading="lazy">
-          </div>
+      <nav id="navbar"
+        class="fixed top-0 w-full z-[100] transition-all duration-300 py-4 px-6 md:px-12 flex justify-between items-center nav-blur">
+        <a href="../index.html" class="text-xl md:text-2xl font-black text-white hover:text-amber-500 transition">themujeeb.py</a>
+        
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex gap-8 text-sm font-medium text-gray-300">
+            <a href="../index.html#home" class="hover:text-amber-500 transition border-b-2 border-transparent hover:border-amber-500">Home</a>
+            <a href="../index.html#about" class="hover:text-amber-500 transition border-b-2 border-transparent hover:border-amber-500">About</a>
+            <a href="../index.html#projects" class="hover:text-amber-500 transition border-b-2 border-transparent hover:border-amber-500">Projects</a>
+            <a href="../index.html#skills" class="hover:text-amber-500 transition border-b-2 border-transparent hover:border-amber-500">Skills</a>
+            <a href="../index.html#contact" class="hover:text-amber-500 transition border-b-2 border-transparent hover:border-amber-500">Contact</a>
         </div>
 
+        <div class="flex items-center gap-4">
+            <a href="https://github.com/mujeebbutt/Library-Managment-System" target="_blank" class="hidden sm:block text-white transition text-2xl">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.fiverr.com/s/BRVAD5b" target="_blank"
+                class="bg-[#f5a623] hover:bg-[#c47a00] text-black px-4 md:px-6 py-2 rounded-full text-sm md:text-base font-bold transition">Hire
+                Me</a>
+            
+            <!-- Mobile Toggle -->
+            <button id="mobile-toggle" class="md:hidden text-white text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
 
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="mobile-menu">
+        <button id="mobile-close" class="absolute top-6 right-8 text-white text-3xl">&times;</button>
+        <a href="../index.html#home" class="text-2xl font-bold text-white hover:text-amber-500 transition">Home</a>
+        <a href="../index.html#about" class="text-2xl font-bold text-white hover:text-amber-500 transition">About</a>
+        <a href="../index.html#projects" class="text-2xl font-bold text-white hover:text-amber-500 transition">Projects</a>
+        <a href="../index.html#skills" class="text-2xl font-bold text-white hover:text-amber-500 transition">Skills</a>
+        <a href="../index.html#contact" class="text-2xl font-bold text-white hover:text-amber-500 transition">Contact</a>
+        <div class="flex gap-6 mt-4">
+            <a href="https://github.com/mujeebbutt/Library-Managment-System" target="_blank" class="text-white text-3xl">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/themujeebpy" target="_blank" class="text-white text-3xl">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </div>
+    </div>
+
+  <main class="max-w-7xl mx-auto px-6 md:px-12">
+    <a href="../index.html#projects" class="text-amber-500 hover:text-amber-400 font-bold mb-12 inline-block">← Back to
+      Projects</a>
+
+    <header class="mb-16 pt-8 md:pt-0">
+      <h1 class="text-white font-black leading-tight text-[clamp(32px,7vw,64px)] mb-4">Library Management System</h1>
+      <p class="text-gray-400 text-lg md:text-xl mb-8 max-w-2xl">A robust desktop application for modern libraries to manage assets and
+        members.</p>
+      <div class="flex flex-wrap gap-2 mb-10">
+        <span
+          class="bg-amber-500/10 text-amber-500 px-3 py-1 rounded text-xs font-bold uppercase tracking-wider">Python</span>
+        <span
+          class="bg-amber-500/10 text-amber-500 px-3 py-1 rounded text-xs font-bold uppercase tracking-wider">Tkinter</span>
+        <span
+          class="bg-amber-500/10 text-amber-500 px-3 py-1 rounded text-xs font-bold uppercase tracking-wider">SQLite</span>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4">
+
+        <a href="https://github.com/mujeebbutt/Library-Managment-System" target="_blank"
+          class="border border-amber-500/50 hover:bg-amber-500/10 px-8 py-3 rounded-lg font-bold transition text-center">View on
+          GitHub</a>
+      </div>
+    </header>
+
+    <section class="mb-24">
+      <img src="../assets/librarydashboard.png" alt="Library System UI" class="w-full rounded-2xl">
     </section>
 
-    <!-- Highlights / Learnings -->
-    <section class="glass rounded-2xl p-6 mb-12">
-      <h2 class="text-xl font-bold mb-3">Highlights & Learnings</h2>
-      <ul class="list-disc list-inside space-y-2 text-gray-300">
-        <li>Atomic stock updates during issue/return (avoid race conditions)</li>
-        <li>Simple, readable model methods (<code>Loan.mark_returned()</code>)</li>
-        <li>Reusability via base template + message toasts</li>
-        <li>Clear UX for destructive actions (confirm modals/flows)</li>
+    <section class="grid lg:grid-cols-3 gap-16 mb-24">
+      <div class="lg:col-span-2">
+        <h2 class="text-3xl font-bold mb-8">About The Project</h2>
+        <div class="space-y-6 text-gray-400 leading-relaxed text-lg">
+          <p>
+            This desktop-based Library Management System provides a comprehensive suite of tools for librarians to
+            digitize their operations. Built with Python using the Tkinter framework, it features a clean and
+            professional interface that prioritizes ease of use and rapid data entry.
+          </p>
+          <p>
+            The backend utilizes SQLite for light but efficient data storage, handling thousands of book records and
+            member profiles without any performance degradation. The application includes complex logic for loan
+            periods, fine calculations, and real-time availability status for every book in the collection.
+          </p>
+        </div>
+      </div>
+      <div class="glass-card p-8">
+        <h3 class="font-bold mb-6 text-amber-500 uppercase tracking-widest text-sm">Key Details</h3>
+        <ul class="space-y-4">
+          <li class="flex justify-between border-b border-white/5 pb-2"><span
+              class="text-gray-500">Platform</span><span>Windows Desktop</span></li>
+          <li class="flex justify-between border-b border-white/5 pb-2"><span
+              class="text-gray-500">Architecture</span><span>MVC</span></li>
+          <li class="flex justify-between border-b border-white/5 pb-2"><span
+              class="text-gray-500">Storage</span><span>Local DB</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mb-24">
+      <h2 class="text-2xl md:text-3xl font-bold mb-12 text-center">Key Features</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="glass-card p-6">
+          <div class="text-amber-500 text-2xl mb-4">📚</div>
+          <h3 class="font-bold mb-2">Book Inventory</h3>
+          <p class="text-gray-500 text-sm">Detailed cataloging with ISBN, category, and real-time stock levels.</p>
+        </div>
+        <div class="glass-card p-6 border-white/10 bg-white/5">
+          <div class="text-amber-500 text-2xl mb-4">👥</div>
+          <h3 class="font-bold mb-2">Member Profiles</h3>
+          <p class="text-gray-500 text-sm">Comprehensive member management with contact info and active loan history.
+          </p>
+        </div>
+        <div class="glass-card p-6">
+          <div class="text-amber-500 text-2xl mb-4">🔄</div>
+          <h3 class="font-bold mb-2">Loan Logic</h3>
+          <p class="text-gray-500 text-sm">Automated issuing and returning process with due-date reminders.</p>
+        </div>
+        <div class="glass-card p-6">
+          <div class="text-amber-500 text-2xl mb-4">💰</div>
+          <h3 class="font-bold mb-2">Fine Management</h3>
+          <p class="text-gray-500 text-sm">Automatic calculation and recording of fines for overdue items.</p>
+        </div>
+        <div class="glass-card p-6">
+          <div class="text-amber-500 text-2xl mb-4">🔍</div>
+          <h3 class="font-bold mb-2">Advanced Search</h3>
+          <p class="text-gray-500 text-sm">Instantly find books or members with dynamic filtering and search.</p>
+        </div>
+        <div class="glass-card p-6">
+          <div class="text-amber-500 text-2xl mb-4">📈</div>
+          <h3 class="font-bold mb-2">Statistical Reports</h3>
+          <p class="text-gray-500 text-sm">Generate monthly reports on library usage and inventory growth.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- DYNAMIC CASE STUDY CONTENT -->
+    <section class="mb-24 fade-up">
+      <h2 class="text-3xl font-bold mb-12">Challenges & Solutions</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="glass-card p-8 border-l-4 border-red-500/50">
+          <h3 class="font-bold text-xl mb-4">The Challenge</h3>
+          <p class="text-gray-400">Managing relational data consistency in SQLite while ensuring the UI remained highly
+            responsive during heavy database queries.</p>
+        </div>
+        <div class="glass-card p-8 border-l-4 border-green-500/50 bg-white/5">
+          <h3 class="font-bold text-xl mb-4">The Solution</h3>
+          <p class="text-gray-400">Implemented optimized SQL queries and used threading for database operations to
+            prevent the main application thread from freezing.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-24 fade-up">
+      <h2 class="text-3xl font-bold mb-8">Achievements</h2>
+      <ul class="space-y-4">
+
+        <li class="flex gap-4">
+          <span class="text-amber-500 font-black">1.</span>
+          <p>Successfully implemented complex fine-calculation algorithms.</p>
+        </li>
+        <li class="flex gap-4">
+          <span class="text-amber-500 font-black">2.</span>
+          <p>Zero data corruption reported during long-term testing.</p>
+        </li>
+        <li class="flex gap-4">
+          <span class="text-amber-500 font-black">3.</span>
+          <p>Designed a custom premium Tkinter theme.</p>
+        </li>
       </ul>
     </section>
 
-    <!-- Links / CTA -->
-    <section class="grid md:grid-cols-2 gap-6">
-      <a href="#" class="glass rounded-2xl p-6 hover:bg-white/10 transition">
-        <div class="text-sm text-gray-400 mb-1">Repository</div>
-        <div class="font-semibold">View Source Code →</div>
-        <p class="text-gray-400 mt-2 text-sm">Browse models, views, and Tailwind templates.</p>
-      </a>
-      <a href="#" class="glass rounded-2xl p-6 hover:bg-white/10 transition">
-        <div class="text-sm text-gray-400 mb-1">Live Demo</div>
-        <div class="font-semibold">Open Deployed App →</div>
-        <p class="text-gray-400 mt-2 text-sm">Try issuing a book and returning it to see fines.</p>
-      </a>
+    <section class="mb-24 fade-up">
+      <h2 class="text-3xl font-bold mb-12 text-center">Project Feedback</h2>
+      <div class="max-w-3xl mx-auto glass-card p-12 text-center relative overflow-hidden">
+        <div class="text-6xl text-amber-500/10 absolute top-4 left-4 font-serif">"</div>
+        <p class="text-xl text-white mb-8 italic relative z-10">"A very professional desktop application. It handled our
+          5000+ book database without a single hitch. Great work on the reporting system."</p>
+        <div class="flex items-center justify-center gap-4 relative z-10">
+          <div
+            class="w-12 h-12 rounded-full bg-amber-500 flex items-center justify-center text-black font-bold text-xl">
+            📚
+          </div>
+          <div class="text-left">
+            <h4 class="font-bold">Verified Client</h4>
+            <div class="text-amber-500 text-xs">★★★★★</div>
+          </div>
+        </div>
+      </div>
     </section>
+    <!-- END DYNAMIC CASE STUDY CONTENT -->
 
-    <!-- Back link -->
-    <div class="mt-10">
-      <a href="../index.html#projects" class="inline-flex items-center gap-2 text-primary-blue hover:underline">
-        ← Back to Portfolio
+
+    <!-- Project Navigation -->
+    <div
+      class="flex flex-col md:flex-row justify-between items-center gap-8 py-16 border-t border-white/10 w-full mt-12">
+
+      <!-- Previous -->
+      <a href="mehwish-butt-tutor.html" class="group flex items-center gap-4 text-left">
+        <div
+          class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center transition duration-300 group-hover:bg-amber-500 group-hover:text-black">
+          ←
+        </div>
+        <div>
+          <span class="text-xs text-gray-500 uppercase block mb-1">Previous Project</span>
+          <span class="font-bold text-lg transition group-hover:text-amber-500">Mehwish Online Institute</span>
+        </div>
       </a>
+
+      <!-- Next -->
+      <a href="pharmacy-management.html" class="group flex items-center gap-4 text-right">
+        <div>
+          <span class="text-xs text-gray-500 uppercase block mb-1">Next Project</span>
+          <span class="font-bold text-lg transition group-hover:text-amber-500">Pharmacy IMS</span>
+        </div>
+        <div
+          class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center transition duration-300 group-hover:bg-amber-500 group-hover:text-black">
+          →
+        </div>
+      </a>
+
     </div>
+    <footer class="py-12 border-t border-white/5 text-center">
+      <div class="flex justify-between items-center flex-wrap gap-8">
+        <div class="text-left">
+          <h2 class="text-2xl font-black mb-1">themujeeb.py</h2>
+          <p class="text-gray-500 text-sm">Turning Ideas into Code & Creativity</p>
+        </div>
+
+        <div class="footer-socials">
+          <a href="https://github.com/mujeebbutt" target="_blank" class="social-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+              <path
+                d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z" />
+            </svg>
+          </a>
+          <a href="https://linkedin.com/in/themujeebpy" target="_blank" class="social-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+          </a>
+          <a href="https://instagram.com/themujeeb.py" target="_blank" class="social-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+            </svg>
+          </a>
+          <a href="https://www.fiverr.com/sellers/mujeeburrehm712" target="_blank" class="social-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+              <path
+                d="M23.004 15.588a.995.995 0 10-1.99 0 .995.995 0 001.99 0zm-9.552-7.27c-2.382 0-3.96 1.107-4.928 2.78l-.046.08V8.53H4.19v11.88h4.29v-6.504c0-1.876 1.05-2.78 2.487-2.78 1.436 0 2.082.904 2.082 2.78v6.504h4.29v-7.67c0-2.87-1.83-4.423-3.887-4.423zM0 12c0 6.627 5.373 12 12 12s12-5.373 12-12S18.627 0 12 0 0 5.373 0 12zm12-10c5.514 0 10 4.486 10 10s-4.486 10-10 10S2 17.514 2 12 6.486 2 12 2z" />
+            </svg>
+          </a>
+        </div>
+
+      </div>
+      <p class="text-gray-600 text-xs mt-12">&copy; 2026 Mujeeb ur Rehman · All rights reserved</p>
+    </footer>
   </main>
 
-  <!-- Footer -->
-  <footer class="border-t border-gray-800 py-10 text-center text-gray-400">
-    © 2025 Mujeeb ur Rehman · Built with Tailwind
-  </footer>
+  
+    <script>
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, observerOptions);
+        document.querySelectorAll('section, h1, header, .glass-card').forEach(el => {
+            el.classList.add('fade-up');
+            observer.observe(el);
+        });
+
+        // Mobile Menu Toggle
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileClose = document.getElementById('mobile-close');
+
+        if (mobileToggle && mobileMenu && mobileClose) {
+            mobileToggle.addEventListener('click', () => {
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            mobileClose.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+
+            // Close menu on link click
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            });
+        }
+    </script>
 </body>
 
 </html>
