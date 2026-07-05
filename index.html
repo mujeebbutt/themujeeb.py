@@ -53,8 +53,10 @@
 
         .hero-portrait-container {
             position: relative;
-            width: min(500px, 85vw);
-            height: min(600px, 55dvh);
+            width: min(650px, 95vw);
+            /* increased */
+            height: min(750px, 75vh);
+            /* increased */
             margin: 0 auto;
             display: flex;
             justify-content: center;
@@ -62,32 +64,160 @@
             z-index: 5;
         }
 
+        /* Glow stays same but slightly bigger */
         .hero-portrait-blend {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 120%;
-            height: 120%;
-            background: radial-gradient(circle, rgba(245, 166, 35, 0.25) 0%, transparent 70%);
-            filter: blur(60px);
+            width: 140%;
+            height: 140%;
+            background: radial-gradient(circle, rgba(245, 166, 35, 0.3) 0%, transparent 70%);
+            filter: blur(80px);
             z-index: 1;
             pointer-events: none;
         }
 
+        /* Make image visually bigger */
         .hero-image {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            /* Multi-step mask for soft edges and stronger bottom fade */
-            mask-image: radial-gradient(circle at center, black 40%, transparent 100%),
-                linear-gradient(to top, transparent 0%, black 20%);
-            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%),
-                linear-gradient(to top, transparent 0%, black 20%);
+            width: 115%;
+            /* bigger than container */
+            height: 115%;
+            object-fit: cover;
+            /* IMPORTANT: fills space */
+
+            mask-image: radial-gradient(circle at center, black 45%, transparent 100%),
+                linear-gradient(to top, transparent 0%, black 25%);
+            -webkit-mask-image: radial-gradient(circle at center, black 45%, transparent 100%),
+                linear-gradient(to top, transparent 0%, black 25%);
+
             mask-composite: intersect;
             -webkit-mask-composite: source-in;
-            filter: contrast(1.05) brightness(1.1);
+
+            filter: contrast(1.08) brightness(1.15);
             z-index: 10;
+        }
+
+        /* Restoring Color & Increasing Space */
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.8rem);
+            /* Slightly larger for impact */
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 60px;
+            /* INCREASED: Pushes the image further down */
+            z-index: 30;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .title-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: baseline;
+            gap: 20px;
+        }
+
+        /* Original Color Combo */
+        .main-phrase {
+            color: #ffffff;
+            /* Pure White */
+        }
+
+        .sub-phrase {
+            color: #f5a623;
+            /* Your Brand Orange */
+        }
+
+        /* Fix the Image overlapping the head */
+        .hero-portrait-container {
+            position: relative;
+            margin-top: 20px;
+            /* Extra breathing room */
+            z-index: 5;
+        }
+
+        @media (max-width: 768px) {
+
+            /* Ensure the title doesn't push the image too far down */
+            .hero-title {
+                font-size: 2.2rem;
+                margin-top: 20px;
+                margin-bottom: 20px;
+                /* Reduced to save space for the image */
+            }
+
+            .title-group {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            /* Desktop Specific Adjustments */
+            @media (min-width: 769px) {
+                .hero-title {
+                    margin-top: 120px;
+                    /* INCREASED: Pushes the whole title away from the Navbar */
+                    margin-bottom: 40px;
+                    /* Space between text and your head */
+                    display: flex;
+                    flex-direction: column;
+                    /* Stack the two main groups */
+                    align-items: center;
+                }
+
+                .title-group {
+                    display: block;
+                    /* Break the horizontal flow */
+                    text-align: center;
+                    width: 100%;
+                }
+
+                .main-phrase {
+                    display: block;
+                    margin-bottom: -10px;
+                    /* Tighten vertical gap between lines */
+                }
+
+                .sub-phrase {
+                    display: block;
+                    margin-top: 150px;
+                    /* Pushes "with Clarity & Style" below the head level */
+                    color: #f5a623;
+                }
+            }
+
+            /* Force the image container to be larger */
+            .hero-portrait-container {
+                height: 60vh !important;
+                /* Increased from 35/45 to 60% of screen height */
+                width: 100vw;
+                /* Full width */
+                margin-top: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .hero-image {
+                width: 140% !important;
+                /* Scale up to feel "Cinematic" */
+                max-width: none !important;
+                /* Remove restrictions */
+                height: 100%;
+                object-fit: contain;
+                /* Keeps your proportions perfect */
+                filter: contrast(1.1) brightness(1.1);
+                mask-image: linear-gradient(to top, transparent 5%, black 40%);
+            }
+
+            /* Adjust floating icons so they don't look huge next to the portrait */
+            .floating-tech {
+                width: 30px;
+                height: 30px;
+            }
         }
 
         /* Floating Tech Icons */
@@ -483,14 +613,13 @@
 
     <section id="home"
         class="relative min-h-screen h-auto md:h-[100dvh] flex flex-col items-center justify-start md:justify-center px-6 md:px-12 pt-32 md:pt-0 text-center overflow-hidden">
+        <h1 class="hero-title fade-up">
+            <div class="title-group">
+                <span class="main-phrase">Building Useful Software</span>
 
-        <div class="z-20 relative mb-2 md:mb-6">
-            <h1 class="text-white font-black leading-tight text-[clamp(28px,7vw,64px)] mb-1 fade-up">
-                Building Useful Software <br class="hidden md:block">
-                <span class="text-amber-500">with Clarity & Style</span>
-            </h1>
-        </div>
-
+                <span class="sub-phrase">with Clarity & Style</span>
+            </div>
+        </h1>
         <div class="hero-portrait-container mb-4 fade-up">
             <div class="hero-portrait-blend"></div>
             <!-- Floating Tech Elements (Responsive Offsets) -->
@@ -561,7 +690,7 @@
             <a href="#projects"
                 class="bg-[#f5a623] hover:bg-[#c47a00] text-black px-6 py-2.5 rounded-full font-bold transition transform hover:scale-105">View
                 Projects</a>
-            <a href="Mujeeb ur Rehman.pdf" target="_blank" download
+            <a href="Mujeeb ur Rehman  CV.pdf" target="_blank" download
                 class="border border-white/20 hover:border-amber-500/50 bg-white/5 backdrop-blur-md text-white px-6 py-2.5 rounded-full font-bold transition">Download
                 CV</a>
         </div>
@@ -757,7 +886,7 @@
                     </p>
                     <div class="grid grid-cols-2 sm:grid-cols-3 gap-8">
                         <div>
-                            <p class="text-3xl font-black text-amber-500">10+</p>
+                            <p class="text-3xl font-black text-amber-500">17+</p>
                             <p class="text-gray-500 text-sm">Projects</p>
                         </div>
                         <div>
@@ -1104,120 +1233,280 @@
                 </div>
             </div>
 
+            <!-- Project 13 -->
+            <div class="glass-card overflow-hidden group cursor-pointer"
+                onclick="window.location.href='projects/whatsapp-library-fyp.html'">
+                <div class="project-thumb-designed">
+                    <img src="assets/libconnectthumb.png" alt="LibConnect"
+                        class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">LibConnect – WhatsApp Library System</h3>
+                    <p class="text-gray-500 text-sm mb-4">Self-contained WhatsApp-style chat interface for library
+                        management — no external API needed</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="text-[10px] bg-amber-500/10 text-amber-500 px-2 py-1 rounded">Python</span>
+                        <span class="text-[10px] bg-amber-500/10 text-amber-500 px-2 py-1 rounded">Flask</span>
+                    </div>
+                    <div class="flex gap-4">
+                        <a href="https://github.com/mujeebbutt/whatsapp-library-fyp" onclick="event.stopPropagation()"
+                            target="_blank"
+                            class="flex-1 border border-amber-500/30 text-amber-500 text-center py-2 rounded-lg font-bold text-sm transition hover:bg-amber-500/10">
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 14 -->
+            <div class="glass-card overflow-hidden group cursor-pointer"
+                onclick="window.location.href='projects/restaurant-management-system.html'">
+                <div class="project-thumb-designed">
+                    <img src="assets/restaurantposthumb.png" alt="Restaurant POS"
+                        class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Restaurant Management System & POS</h3>
+                    <p class="text-gray-500 text-sm mb-4">Production-ready desktop POS — FastAPI backend, React
+                        frontend, Electron shell, offline-first</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="text-[10px] bg-amber-500/10 text-amber-500 px-2 py-1 rounded">Python</span>
+                        <span class="text-[10px] bg-amber-500/10 text-amber-500 px-2 py-1 rounded">React</span>
+                        <span class="text-[10px] bg-amber-500/10 text-amber-500 px-2 py-1 rounded">Electron</span>
+                    </div>
+                    <div class="flex gap-4">
+                        <a href="https://github.com/mujeebbutt/Restraunt-managment-system"
+                            onclick="event.stopPropagation()" target="_blank"
+                            class="flex-1 border border-amber-500/30 text-amber-500 text-center py-2 rounded-lg font-bold text-sm transition hover:bg-amber-500/10">
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 15 -->
+            <div class="glass-card overflow-hidden group cursor-pointer"
+                onclick="window.location.href='projects/ai-exam-paper-generator.html'">
+                <div class="project-thumb-designed">
+                    <img src="assets/examlabthumb.png" alt="AI Exam Lab"
+                        class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">AI Exam Paper Generator</h3>
+                    <p class="text-gray-500 text-sm mb-4">RAG-powered app that generates MCQs and structured exam
+                        papers from uploaded notes using Gemini API</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="text-[10px] bg-amber-500/10 text-amber-500 px-2 py-1 rounded">Python</span>
+                        <span class="text-[10px] bg-amber-500/10 text-amber-500 px-2 py-1 rounded">Gemini AI</span>
+                    </div>
+                    <div class="flex gap-4">
+                        <a href="https://github.com/mujeebbutt/ai-exam-paper-generator"
+                            onclick="event.stopPropagation()" target="_blank"
+                            class="flex-1 border border-amber-500/30 text-amber-500 text-center py-2 rounded-lg font-bold text-sm transition hover:bg-amber-500/10">
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 16 -->
+            <div class="glass-card overflow-hidden group cursor-pointer"
+                onclick="window.location.href='projects/clothy.html'">
+                <div class="project-thumb-designed">
+                    <img src="assets/clothythumb.png" alt="Clothy"
+                        class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Clothy – Fashion Revolution</h3>
+                    <p class="text-gray-500 text-sm mb-4">AI-assisted fashion e-commerce platform — Men/Women/Kids
+                        collections, smart product discovery, delivery tracking</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="text-[10px] bg-amber-500/10 text-amber-500 px-2 py-1 rounded">Python</span>
+                        <span class="text-[10px] bg-amber-500/10 text-amber-500 px-2 py-1 rounded">JavaScript</span>
+                    </div>
+                    <div class="flex gap-4">
+                        <a href="https://github.com/mujeebbutt/clothy" onclick="event.stopPropagation()"
+                            target="_blank"
+                            class="flex-1 border border-amber-500/30 text-amber-500 text-center py-2 rounded-lg font-bold text-sm transition hover:bg-amber-500/10">
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 17 -->
+            <div class="glass-card overflow-hidden group cursor-pointer"
+                onclick="window.location.href='projects/e-book-management-system.html'">
+                <div class="project-thumb-designed">
+                    <img src="assets/bookversethumb.png" alt="BookVerse"
+                        class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">BookVerse – E-Book Management System</h3>
+                    <p class="text-gray-500 text-sm mb-4">Digital library platform for browsing, cataloging, and
+                        managing e-books across genres</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="text-[10px] bg-amber-500/10 text-amber-500 px-2 py-1 rounded">Python</span>
+                        <span class="text-[10px] bg-amber-500/10 text-amber-500 px-2 py-1 rounded">JavaScript</span>
+                    </div>
+                    <div class="flex gap-4">
+                        <a href="https://github.com/mujeebbutt/e-book-management-system"
+                            onclick="event.stopPropagation()" target="_blank"
+                            class="flex-1 border border-amber-500/30 text-amber-500 text-center py-2 rounded-lg font-bold text-sm transition hover:bg-amber-500/10">
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
     <!-- Skills Section -->
     <section id="skills" class="py-24 px-6 md:px-12 bg-[#0c0c0c]">
-    <div class="max-w-7xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-12 md:gap-16">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 md:gap-16">
 
-            <!-- Technical Proficiencies -->
-            <div>
-                <h3 class="text-2xl font-bold mb-8">Technical Proficiencies</h3>
-                <div class="space-y-6">
-                    <!-- Skill Item Template -->
-                    <div>
-                        <div class="flex justify-between mb-2">
-                            <span>Python</span>
-                            <span>90% • Advanced</span>
+                <!-- Technical Proficiencies -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-8">Technical Proficiencies</h3>
+                    <div class="space-y-6">
+                        <!-- Skill Item Template -->
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Python</span>
+                                <span>90% • Advanced</span>
+                            </div>
+                            <div class="w-full h-3 bg-white/10 rounded-full overflow-hidden">
+                                <div class="skill-progress h-full bg-gradient-to-r from-amber-500 to-yellow-400 rounded-full w-0"
+                                    data-width="90%"></div>
+                            </div>
                         </div>
-                        <div class="w-full h-3 bg-white/10 rounded-full overflow-hidden">
-                            <div class="skill-progress h-full bg-gradient-to-r from-amber-500 to-yellow-400 rounded-full w-0" data-width="90%"></div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>HTML</span>
+                                <span>92% • Advanced</span>
+                            </div>
+                            <div class="w-full h-3 bg-white/10 rounded-full overflow-hidden">
+                                <div class="skill-progress h-full bg-gradient-to-r from-amber-500 to-yellow-400 rounded-full w-0"
+                                    data-width="92%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>CSS</span>
+                                <span>88% • Advanced</span>
+                            </div>
+                            <div class="w-full h-3 bg-white/10 rounded-full overflow-hidden">
+                                <div class="skill-progress h-full bg-gradient-to-r from-amber-500 to-yellow-400 rounded-full w-0"
+                                    data-width="88%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>JavaScript</span>
+                                <span>85% • Advanced</span>
+                            </div>
+                            <div class="w-full h-3 bg-white/10 rounded-full overflow-hidden">
+                                <div class="skill-progress h-full bg-gradient-to-r from-amber-500 to-yellow-400 rounded-full w-0"
+                                    data-width="85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>React.js</span>
+                                <span>80% • Intermediate</span>
+                            </div>
+                            <div class="w-full h-3 bg-white/10 rounded-full overflow-hidden">
+                                <div class="skill-progress h-full bg-gradient-to-r from-amber-500 to-yellow-400 rounded-full w-0"
+                                    data-width="80%"></div>
+                            </div>
                         </div>
                     </div>
-                    <div>
-                        <div class="flex justify-between mb-2">
-                            <span>HTML</span>
-                            <span>92% • Advanced</span>
-                        </div>
-                        <div class="w-full h-3 bg-white/10 rounded-full overflow-hidden">
-                            <div class="skill-progress h-full bg-gradient-to-r from-amber-500 to-yellow-400 rounded-full w-0" data-width="92%"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="flex justify-between mb-2">
-                            <span>CSS</span>
-                            <span>88% • Advanced</span>
-                        </div>
-                        <div class="w-full h-3 bg-white/10 rounded-full overflow-hidden">
-                            <div class="skill-progress h-full bg-gradient-to-r from-amber-500 to-yellow-400 rounded-full w-0" data-width="88%"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="flex justify-between mb-2">
-                            <span>JavaScript</span>
-                            <span>85% • Advanced</span>
-                        </div>
-                        <div class="w-full h-3 bg-white/10 rounded-full overflow-hidden">
-                            <div class="skill-progress h-full bg-gradient-to-r from-amber-500 to-yellow-400 rounded-full w-0" data-width="85%"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="flex justify-between mb-2">
-                            <span>React.js</span>
-                            <span>80% • Intermediate</span>
-                        </div>
-                        <div class="w-full h-3 bg-white/10 rounded-full overflow-hidden">
-                            <div class="skill-progress h-full bg-gradient-to-r from-amber-500 to-yellow-400 rounded-full w-0" data-width="80%"></div>
+
+                    <!-- Soft Skills -->
+                    <div class="mt-12">
+                        <h3 class="text-2xl font-bold mb-6">Soft Skills</h3>
+                        <div class="flex flex-wrap gap-4">
+                            <span class="glass-card px-4 py-2 rounded-full text-sm font-medium bg-white/10">Problem
+                                Solving</span>
+                            <span
+                                class="glass-card px-4 py-2 rounded-full text-sm font-medium bg-white/10">Teamwork</span>
+                            <span
+                                class="glass-card px-4 py-2 rounded-full text-sm font-medium bg-white/10">Creativity</span>
+                            <span
+                                class="glass-card px-4 py-2 rounded-full text-sm font-medium bg-white/10">Adaptability</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Soft Skills -->
-                <div class="mt-12">
-                    <h3 class="text-2xl font-bold mb-6">Soft Skills</h3>
-                    <div class="flex flex-wrap gap-4">
-                        <span class="glass-card px-4 py-2 rounded-full text-sm font-medium bg-white/10">Problem Solving</span>
-                        <span class="glass-card px-4 py-2 rounded-full text-sm font-medium bg-white/10">Teamwork</span>
-                        <span class="glass-card px-4 py-2 rounded-full text-sm font-medium bg-white/10">Creativity</span>
-                        <span class="glass-card px-4 py-2 rounded-full text-sm font-medium bg-white/10">Adaptability</span>
+                <!-- Tools & Ecosystem -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-8">Tools & Ecosystem</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                        <div class="glass-card p-4 flex items-center gap-3 hover:scale-105 transition-transform">
+                            <span>🔥</span><span class="text-sm font-medium">Firebase</span>
+                        </div>
+                        <div class="glass-card p-4 flex items-center gap-3 hover:scale-105 transition-transform">
+                            <span>🧪</span><span class="text-sm font-medium">Flask</span>
+                        </div>
+                        <div class="glass-card p-4 flex items-center gap-3 hover:scale-105 transition-transform">
+                            <span>🐍</span><span class="text-sm font-medium">Django</span>
+                        </div>
+                        <div class="glass-card p-4 flex items-center gap-3 hover:scale-105 transition-transform">
+                            <span>🎯</span><span class="text-sm font-medium">FastAPI</span>
+                        </div>
+                        <div class="glass-card p-4 flex items-center gap-3 hover:scale-105 transition-transform">
+                            <span>📦</span><span class="text-sm font-medium">Node.js</span>
+                        </div>
+                        <div class="glass-card p-4 flex items-center gap-3 hover:scale-105 transition-transform">
+                            <span>⚛️</span><span class="text-sm font-medium">React</span>
+                        </div>
+                        <div class="glass-card p-4 flex items-center gap-3 hover:scale-105 transition-transform">
+                            <span>🖥️</span><span class="text-sm font-medium">Electron</span>
+                        </div>
+                        <div class="glass-card p-4 flex items-center gap-3 hover:scale-105 transition-transform">
+                            <span>🎨</span><span class="text-sm font-medium">Tailwind</span>
+                        </div>
+                        <div class="glass-card p-4 flex items-center gap-3 hover:scale-105 transition-transform">
+                            <span>🍃</span><span class="text-sm font-medium">MongoDB</span>
+                        </div>
+                        <div class="glass-card p-4 flex items-center gap-3 hover:scale-105 transition-transform">
+                            <span>🛠</span><span class="text-sm font-medium">Git & GitHub</span>
+                        </div>
+                    </div>
+
+                    <!-- Download CV Button -->
+                    <div class="mt-8 text-center">
+                        <a href="Mujeeb ur Rehman  CV.pdf" download
+                            class="px-6 py-3 bg-amber-500 hover:bg-yellow-400 text-black rounded-full font-semibold transition">
+                            Download CV
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Tools & Ecosystem -->
-            <div>
-                <h3 class="text-2xl font-bold mb-8">Tools & Ecosystem</h3>
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                    <div class="glass-card p-4 flex items-center gap-3 hover:scale-105 transition-transform"><span>🔥</span><span class="text-sm font-medium">Firebase</span></div>
-                    <div class="glass-card p-4 flex items-center gap-3 hover:scale-105 transition-transform"><span>🧪</span><span class="text-sm font-medium">Flask</span></div>
-                    <div class="glass-card p-4 flex items-center gap-3 hover:scale-105 transition-transform"><span>📦</span><span class="text-sm font-medium">Node.js</span></div>
-                    <div class="glass-card p-4 flex items-center gap-3 hover:scale-105 transition-transform"><span>🎨</span><span class="text-sm font-medium">Tailwind</span></div>
-                    <div class="glass-card p-4 flex items-center gap-3 hover:scale-105 transition-transform"><span>🍃</span><span class="text-sm font-medium">MongoDB</span></div>
-                    <div class="glass-card p-4 flex items-center gap-3 hover:scale-105 transition-transform"><span>🛠</span><span class="text-sm font-medium">Git & GitHub</span></div>
-                </div>
-
-                <!-- Download CV Button -->
-                <div class="mt-8 text-center">
-                    <a href="Mujeeb ur Rehman.pdf" download class="px-6 py-3 bg-amber-500 hover:bg-yellow-400 text-black rounded-full font-semibold transition">
-                        Download CV
-                    </a>
-                </div>
+            <!-- GitHub Stats -->
+            <div class="mt-16 flex justify-center fade-up">
+                <img src="https://github-readme-stats.vercel.app/api?username=mujeebbutt&show_icons=true&theme=dark&bg_color=0a0a0a&title_color=f5a623&icon_color=f5a623&text_color=ffffff&border_color=f5a623&hide_border=false"
+                    onerror="this.src='https://ghchart.rshah.org/mujeebbutt'" alt="Mujeeb GitHub Stats"
+                    class="w-full sm:w-2/3 rounded-xl border border-amber-500/20 shadow-2xl shadow-amber-500/5">
             </div>
         </div>
 
-        <!-- GitHub Stats -->
-        <div class="mt-16 flex justify-center fade-up">
-            <img src="https://github-readme-stats.vercel.app/api?username=mujeebbutt&show_icons=true&theme=dark&bg_color=0a0a0a&title_color=f5a623&icon_color=f5a623&text_color=ffffff&border_color=f5a623&hide_border=false"
-                 onerror="this.src='https://ghchart.rshah.org/mujeebbutt'" alt="Mujeeb GitHub Stats"
-                 class="w-full sm:w-2/3 rounded-xl border border-amber-500/20 shadow-2xl shadow-amber-500/5">
-        </div>
-    </div>
-
-    <!-- Skill Bar Animation -->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const bars = document.querySelectorAll(".skill-progress");
-            bars.forEach(bar => {
-                const width = bar.getAttribute("data-width");
-                setTimeout(() => {
-                    bar.style.width = width;
-                }, 200);
+        <!-- Skill Bar Animation -->
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const bars = document.querySelectorAll(".skill-progress");
+                bars.forEach(bar => {
+                    const width = bar.getAttribute("data-width");
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 200);
+                });
             });
-        });
-    </script>
-</section>
+        </script>
+    </section>
 
     <!-- Testimonials Section -->
     <section id="testimonials" class="py-24 px-6 md:px-12 bg-[#0c0c0c]">
